@@ -1,5 +1,13 @@
 <script>
 
+export default {
+    data() {
+        return {
+            showMenu: true,
+        }
+    }
+}
+
 </script>
 
 <template>
@@ -8,7 +16,7 @@
             <a href="/">
                 <img class="w-14 h-14" src="/images/Movie-House-logo.png" alt="logo">
             </a>
-            <ul class="flex gap-12">
+            <ul class="hidden sm:flex sm:gap-12">
                 <li class="text-xl hover:text-gray-300">
                     <router-link class="p-4" to="/">
                         <i class="fa-solid fa-house"></i>
@@ -23,7 +31,10 @@
                 </li>
             </ul>
         </div>
-        <i class="fa-solid fa-magnifying-glass hover:text-primary cursor-pointer text-2xl"></i>
+        <div class="flex items-center gap-5">
+            <i class="block sm:hidden fa-solid fa-bars hover:text-primary cursor-pointer text-2xl"></i>
+            <i class="fa-solid fa-magnifying-glass hover:text-primary cursor-pointer text-2xl"></i>
+        </div>
     </nav>
 </template>
 
