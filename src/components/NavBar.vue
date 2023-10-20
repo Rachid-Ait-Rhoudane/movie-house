@@ -21,7 +21,7 @@ export default {
             <a href="/">
                 <img class="w-14 h-14" src="/images/Movie-House-logo.png" alt="logo">
             </a>
-            <ul id="menu" class="bg-black/60 hidden absolute md:relative top-full md:top-0 left-0 w-full md:w-auto p-2 md:p-0 text-center md:text-left md:flex md:gap-12">
+            <ul id="menu" class="bg-black/60 hidden absolute z-20 md:relative top-full md:top-0 left-0 w-full md:w-auto p-2 md:p-0 text-center md:text-left md:flex md:gap-12">
                 <li class="text-xl hover:text-gray-300">
                     <router-link class="block p-4" to="/">
                         <i class="fa-solid fa-house"></i>
