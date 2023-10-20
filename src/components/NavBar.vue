@@ -3,7 +3,12 @@
 export default {
     data() {
         return {
-            showMenu: true,
+            showMenu: false,
+        }
+    },
+    methods: {
+        toggleMenuIcon() {
+            this.showMenu = !this.showMenu;
         }
     }
 }
@@ -32,7 +37,7 @@ export default {
             </ul>
         </div>
         <div class="flex items-center gap-5">
-            <i id="burger-icon" class="block md:hidden fa-solid fa-bars hover:text-primary cursor-pointer text-2xl"></i>
+            <i id="burger-icon" @click="toggleMenuIcon" :class="[showMenu ? 'fa-solid fa-x' : 'fa-solid fa-bars']" class="block md:hidden hover:text-primary cursor-pointer text-2xl"></i>
             <i class="fa-solid fa-magnifying-glass hover:text-primary cursor-pointer text-2xl"></i>
         </div>
     </nav>
