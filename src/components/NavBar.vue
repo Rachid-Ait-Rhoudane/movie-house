@@ -5,12 +5,12 @@
 <template>
     <nav class="container py-2 text-white flex justify-between items-center">
         <div class="flex items-center gap-10">
-            <router-link to="/">
+            <a href="/">
                 <img class="w-14 h-14" src="/images/Movie-House-logo.png" alt="logo">
-            </router-link>
+            </a>
             <ul class="flex gap-12">
                 <li class="text-xl hover:text-gray-300">
-                    <router-link class="text-primary border-b-2 border-b-primary p-4" to="/">
+                    <router-link class="p-4" to="/">
                         <i class="fa-solid fa-house"></i>
                         Home
                     </router-link>
@@ -26,3 +26,11 @@
         <i class="fa-solid fa-magnifying-glass hover:text-primary cursor-pointer text-2xl"></i>
     </nav>
 </template>
+
+<style scoped>
+.active {
+    color: #F68B1E;
+    border-bottom: 2px solid #F68B1E;
+}
+
+</style>
