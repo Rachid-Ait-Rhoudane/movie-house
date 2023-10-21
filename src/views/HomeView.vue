@@ -1,5 +1,13 @@
 <script>
 
+import SpecialHeader from "../components/SpecialHeader.vue";
+
+export default {
+    components: {
+        SpecialHeader
+    }
+}
+
 </script>
 
 <template>
@@ -16,7 +24,7 @@
 
 
     <div class="py-16">
-        <h1 class="relative text-primary font-bold w-fit mx-auto border border-primary text-6xl py-4 px-12 before:absolute before:top-1/2 before:-translate-y-1/2 before:-left-20 before:w-5 before:h-5 before:bg-primary before:rounded-full after:absolute after:top-1/2 after:-translate-y-1/2 after:-right-20 after:w-5 after:h-5 after:bg-primary after:rounded-full">Movies</h1>
+        <special-header>Movies</special-header>
     </div>
 
 </template>
