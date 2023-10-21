@@ -24,7 +24,7 @@ export default {
 
 
     <div class="py-16">
-        <special-header>Movies</special-header>
+        <special-header>Most Popular</special-header>
     </div>
 
 </template>

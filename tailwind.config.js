@@ -24,7 +24,7 @@ module.exports = {
           },
           '100%': {
             'left': 0,
-            'width': '50%',
+            'width': '51%',
             'height': '100%',
             'border-radius': '0px'
           }
