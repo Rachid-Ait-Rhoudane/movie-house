@@ -10,7 +10,7 @@
         </span>
         <img class="w-full aspect-[3/4]" src="https://image.tmdb.org/t/p/original/NNxYkU70HPurnNCSiCjYAmacwm.jpg" alt="poster image">
         <div class="p-2">
-            <h1 class="text-xl capitalize font-bold text-white">Mission: Impossible - Dead Reckoning Part One</h1>
+            <h1 class="text-xl capitalize font-bold text-white max-w-full line-clamp-2">Mission: Impossible - Dead Reckoning Part OneDead Reckoning Part OneDead Reckoning Part OneDead Reckoning Part OneDead Reckoning Part One</h1>
             <span class="block mt-2 text-white">
                 <i class="fa-solid fa-star text-primary"></i>
                 6.7

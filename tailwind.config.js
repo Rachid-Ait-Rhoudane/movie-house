@@ -15,8 +15,8 @@ module.exports = {
         "secondary": "#181818"
       },
       animation: {
-        "round-left": 'round-left-mv 300ms linear both',
-        "round-right": 'round-right-mv 300ms linear both',
+        "round-left": 'round-left-mv 500ms linear both',
+        "round-right": 'round-right-mv 500ms linear both',
         "bounce-left-right": 'bounce-lr 1s linear infinite'
       },
       keyframes: {
