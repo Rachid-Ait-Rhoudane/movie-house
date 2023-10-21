@@ -1,0 +1,25 @@
+<script>
+
+</script>
+
+<template>
+
+    <div class="group duration-500 hover:-translate-y-3 relative bg-secondary">
+        <span class="absolute z-20 top-0 left-2 after:absolute after:top-0 after:left-0 after:block after:border-x-[24px] after:border-t-[60px] after:border-b-[24px] after:border-secondary/60 after:border-b-transparent">
+            <i class="fa-solid fa-plus text-xl text-white absolute z-30 left-4 top-4 cursor-pointer"></i>
+        </span>
+        <img class="w-full aspect-[3/4]" src="https://image.tmdb.org/t/p/original/NNxYkU70HPurnNCSiCjYAmacwm.jpg" alt="poster image">
+        <div class="p-2">
+            <h1 class="text-xl capitalize font-bold text-white">Mission: Impossible - Dead Reckoning Part One</h1>
+            <span class="block mt-2 text-white">
+                <i class="fa-solid fa-star text-primary"></i>
+                6.7
+            </span>
+        </div>
+        <div class="py-2 m-2 border-t-2 border-t-white flex justify-between items-center text-white">
+            <button class="capitalize font-bold cursor-pointer" type="button">read more</button>
+            <i class="fa-solid fa-right-long group-hover:animate-bounce-left-right text-primary text-xl"></i>
+        </div>
+    </div>
+    
+</template>
