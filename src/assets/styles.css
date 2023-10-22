@@ -39,6 +39,7 @@
 }
 
 .swiper {
+    overflow-y: visible !important;
     width: 240px;
 }
 
