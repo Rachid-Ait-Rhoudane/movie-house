@@ -37,3 +37,59 @@
 .active-page:hover {
     background-color: #F68B1E;
 }
+
+.swiper {
+    width: 240px;
+}
+
+@media (min-width: 1250px) {
+  .swiper {
+    width: 1240px;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1249px) {
+  .swiper {
+    width: 990px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 999px) {
+  .swiper {
+    width: 740px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 767px) {
+  .swiper {
+    width: 490px;
+  }
+}
+
+.swiper-slide {
+  width: 200px !important;
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: rgba(24, 24, 24, 0.6);
+  padding: 50px 30px;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: orange;
+}
+
+.swiper-button-disabled:hover {
+  cursor: not-allowed !important;
+}

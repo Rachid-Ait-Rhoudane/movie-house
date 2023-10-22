@@ -2,16 +2,21 @@
 
 import SpecialHeader from "../components/SpecialHeader.vue";
 import MovieCard from "../components/MovieCard.vue";
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export default {
     components: {
         SpecialHeader,
-        MovieCard
+        MovieCard,
+        Swiper,
+        SwiperSlide,
     },
     data() {
         return {
             currentPage: localStorage.getItem('currentPage') ?? 1,
-            mostPopular: []
+            mostPopular: [],
+            modules: [Navigation]
         }
     },
     methods: {
@@ -56,15 +61,23 @@ export default {
 
     <div class="py-16 mt-16">
         <special-header>Most Popular</special-header>
-        <div class="container mt-24 grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-            <movie-card
-                v-for="movie in mostPopular" 
-                :poster="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
-                :title="movie.original_title"
-                :rate="movie.vote_average" 
-            />
-        </div>
 
+        <swiper
+            class="container mt-24"
+            :modules="modules"
+            :slides-per-view="5"
+            :space-between="50"
+            navigation
+        >
+            <swiper-slide v-for="movie in mostPopular" :key="movie.id">
+                <movie-card 
+                    :poster="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
+                    :title="movie.original_title"
+                    :rate="movie.vote_average" 
+                />
+            </swiper-slide>
+        </swiper>
+        
         <vue-awesome-paginate
             :total-items="50"
             :items-per-page="5"

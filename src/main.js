@@ -5,7 +5,8 @@ import './assets/base.css';
 import './assets/styles.css';
 import VueAwesomePaginate from "vue-awesome-paginate";
 import "vue-awesome-paginate/dist/style.css";
-
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const app = createApp(App);
 
