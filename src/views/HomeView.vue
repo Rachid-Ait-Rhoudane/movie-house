@@ -1,41 +1,21 @@
 <script>
 
-import SpecialHeader from "../components/SpecialHeader.vue";
-import MovieCard from "../components/MovieCard.vue";
+import LandingSection from "../components/LandingSection.vue";
+import MostPopular from "../components/MostPopular.vue";
 
 export default {
     components: {
-        SpecialHeader,
-        MovieCard
+        LandingSection,
+        MostPopular
     }
 }
 
 </script>
 
 <template>
+
+    <landing-section />
+
+    <most-popular />
     
-    <div class="relative h-screen overflow-hidden flex justify-center before:absolute before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
-        <img class="absolute w-full h-full object-cover" src="/images/movies-bg-image.jpg" alt="bg image">
-        <div class="container relative text-white z-20 text-center flex flex-col gap-10 mt-48">
-            <h1 class="text-3xl md:text-6xl">Movie House: Your Ultimate Movie Companion</h1>
-            <span class="block h-1 w-52 bg-primary mx-auto"></span>
-            <p class="text-base md:text-xl">Welcome to Movie House, your ultimate movie companion! With Movie House, you can access a vast collection of your favorite films, from timeless classics to the latest releases.</p> 
-        </div>
-        <i class="absolute animate-bounce left-1/2 -translate-x-1/2 bottom-10 z-20 fa-solid fa-arrow-down text-primary text-3xl md:text-6xl"></i>
-    </div>
-
-
-    <div class="py-16 mt-16">
-        <special-header>Most Popular</special-header>
-        <div class="container mt-24 grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
-            <movie-card />
-            <movie-card />
-            <movie-card />
-            <movie-card />
-            <movie-card />
-            <movie-card />
-            <movie-card />
-        </div>
-    </div>
-
 </template>
