@@ -59,13 +59,20 @@ export default {
 
 <template>
 
-    <div class="py-16 mt-16">
-        <special-header>Most Popular</special-header>
+    <div class="py-16">
+        <special-header>
+            <template #title>
+                Most Popular
+            </template>
+            <template #description>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, officiis.
+            </template>
+        </special-header>
 
         <swiper
-            class="container mt-24"
+            class="container mt-6"
             :modules="modules"
-            :slides-per-view="4.73"
+            :slides-per-view="5.8"
             :space-between="10"
             navigation
         >
