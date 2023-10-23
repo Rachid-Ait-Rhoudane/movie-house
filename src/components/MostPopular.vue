@@ -14,7 +14,7 @@ export default {
     },
     data() {
         return {
-            currentPage: localStorage.getItem('currentPage') ?? 1,
+            currentPage: 1,
             mostPopular: [],
             modules: [Navigation]
         }
@@ -65,8 +65,8 @@ export default {
         <swiper
             class="container mt-24"
             :modules="modules"
-            :slides-per-view="5"
-            :space-between="50"
+            :slides-per-view="4.73"
+            :space-between="10"
             navigation
         >
             <swiper-slide v-for="movie in mostPopular" :key="movie.id">

@@ -38,6 +38,8 @@
     background-color: #F68B1E;
 }
 
+/* Swiper */
+
 .swiper {
     overflow-y: visible !important;
     width: 240px;
@@ -55,22 +57,21 @@
   }
 }
 
-@media (min-width: 768px) and (max-width: 999px) {
+@media (min-width: 768px) and (max-width: 1000px) {
   .swiper {
     width: 740px;
   }
 }
 
-@media (min-width: 500px) and (max-width: 767px) {
+@media (min-width: 500px) and (max-width: 768px) {
   .swiper {
     width: 490px;
   }
 }
 
 .swiper-slide {
-  width: 200px !important;
+  width: 240px !important;
 }
-
 
 .swiper-button-next,
 .swiper-button-prev {
