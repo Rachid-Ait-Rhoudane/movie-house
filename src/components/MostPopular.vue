@@ -70,13 +70,13 @@ export default {
         </special-header>
 
         <swiper
-            class="container mt-6"
+            class="container mt-10"
             :modules="modules"
-            :slides-per-view="5.8"
+            :slides-per-view="5"
             :space-between="10"
             navigation
         >
-            <swiper-slide v-for="movie in mostPopular" :key="movie.id">
+            <swiper-slide class="flex justify-center items-center" v-for="movie in mostPopular" :key="movie.id">
                 <movie-card 
                     :poster="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
                     :title="movie.original_title"

@@ -40,8 +40,13 @@
 
 /* Swiper */
 
+.swiper {
+  overflow-y: visible;
+}
+
 .swiper-slide {
-  width: 240px !important;
+  width: 19.5% !important;
+  min-width: 200px !important;
 }
 
 .swiper-button-next,
