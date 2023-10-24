@@ -54,7 +54,7 @@ export default {
         }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${this.currentPage}`, options)
+        fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${this.currentPage}`, options)
         .then(response => response.json())
         .then(response => this.mostPopular = response.results)
         .catch(err => console.error(err));
@@ -68,7 +68,7 @@ export default {
         }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${this.currentPage}`, options)
+        fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${this.currentPage}`, options)
         .then(response => response.json())
         .then(response => this.mostPopular = response.results)
         .catch(err => console.error(err));
@@ -82,7 +82,7 @@ export default {
     <div class="py-16">
         <special-header>
             <template #title>
-                Most Popular
+                Top Rated
             </template>
             <template #description>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, officiis.
