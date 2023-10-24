@@ -16,7 +16,27 @@ export default {
         return {
             currentPage: 1,
             mostPopular: [],
-            modules: [Navigation]
+            modules: [Navigation],
+            breakpoints: {
+                300: {
+                    slidesPerView: 1,
+                },
+                530: {
+                    slidesPerView: 2,
+                },
+                640: {
+                    slidesPerView: 3,
+                },
+                768: {
+                    slidesPerView: 4,
+                },
+                1024: {
+                    slidesPerView: 5,
+                },
+                1280: {
+                    slidesPerView: 6,
+                },
+            }
         }
     },
     methods: {
@@ -70,10 +90,10 @@ export default {
         </special-header>
 
         <swiper
-            class="container mt-10"
+            class="swiper-container mt-10 overflow-y-visible"
             :modules="modules"
-            :slides-per-view="5"
             :space-between="10"
+            :breakpoints="breakpoints"
             navigation
         >
             <swiper-slide class="flex justify-center items-center" v-for="movie in mostPopular" :key="movie.id">

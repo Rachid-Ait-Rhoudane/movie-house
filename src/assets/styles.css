@@ -40,30 +40,77 @@
 
 /* Swiper */
 
-.swiper {
-  overflow-y: visible;
+.swiper-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 2.25rem/* 36px */;
+  padding-left: 2.25rem/* 36px */;
 }
 
-.swiper-slide {
-  width: 19.5% !important;
-  min-width: 200px !important;
+@media(max-width: 529px) {
+.swiper-container {
+      max-width: 300px;
+}
+}
+
+@media (min-width: 530px) {
+  .swiper-container {
+      max-width: 530px;
+  }
+}
+@media (min-width: 640px) {
+  .swiper-container {
+      max-width: 640px;
+  }
+}
+@media (min-width: 768px) {
+  .swiper-container {
+      max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .swiper-container {
+      max-width: 1024px;
+  }
+}
+@media (min-width: 1280px) {
+  .swiper-container {
+      max-width: 1280px;
+  }
+}
+@media (min-width: 1536px) {
+  .swiper-container {
+      max-width: 1536px;
+  }
 }
 
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: rgba(24, 24, 24, 0.6);
-  padding: 50px 30px;
+position: absolute;
+background-color: rgba(24, 24, 24, 0.6);
+padding: 50px 30px;
+}
+
+@media(max-width: 768px) {
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
 }
 
 .swiper-button-next {
-  right: 0;
+right: 0 !important;
 }
 
 .swiper-button-prev {
-  left: 0;
+left: 0 !important;
 }
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  color: orange;
+color: orange;
+}
+
+.swiper-button-disabled:hover {
+cursor: not-allowed !important;
 }
