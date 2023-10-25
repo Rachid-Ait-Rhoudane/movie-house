@@ -37,7 +37,7 @@ export default {
         <img class="fixed top-0 left-0 w-full h-full object-cover" :src="`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`" alt="movie backdrop">
         <div class="relative z-20 container mt-24">
             <div class="flex items-center flex-col sm:flex-row gap-4 w-full">
-                <img class="w-60 aspect-[3/4]" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="poster image">
+                <img class="w-80 aspect-[3/4]" :src="`https://image.tmdb.org/t/p/original/${movie.poster_path}`" alt="poster image">
                 <div class="flex flex-col gap-5 text-white">
                     <h1 class="text-3xl md:text-6xl font-bold">{{ movie.title }}</h1>
                     <div class="flex items-center gap-2">
