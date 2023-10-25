@@ -2,6 +2,7 @@
 
 import SpecialHeader from "../components/SpecialHeader.vue";
 import MovieCard from "../components/MovieCard.vue";
+import SpinLoader from "./SpinLoader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -11,11 +12,12 @@ export default {
         MovieCard,
         Swiper,
         SwiperSlide,
+        SpinLoader
     },
     data() {
         return {
             currentPage: 1,
-            mostPopular: [],
+            topRated: [],
             modules: [Navigation],
             breakpoints: {
                 300: {
@@ -56,7 +58,7 @@ export default {
 
         fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${this.currentPage}`, options)
         .then(response => response.json())
-        .then(response => this.mostPopular = response.results)
+        .then(response => this.topRated = response.results)
         .catch(err => console.error(err));
     },
     updated() {
@@ -70,7 +72,7 @@ export default {
 
         fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${this.currentPage}`, options)
         .then(response => response.json())
-        .then(response => this.mostPopular = response.results)
+        .then(response => this.topRated = response.results)
         .catch(err => console.error(err));
     }
 }
@@ -90,13 +92,14 @@ export default {
         </special-header>
 
         <swiper
+            v-if="topRated.length"
             class="swiper-container mt-10 overflow-y-visible"
             :modules="modules"
             :space-between="10"
             :breakpoints="breakpoints"
             navigation
         >
-            <swiper-slide class="flex justify-center items-center" v-for="movie in mostPopular" :key="movie.id">
+            <swiper-slide class="flex justify-center items-center" v-for="movie in topRated" :key="movie.id">
                 <movie-card 
                     :poster="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
                     :title="movie.original_title"
@@ -104,6 +107,8 @@ export default {
                 />
             </swiper-slide>
         </swiper>
+
+        <spin-loader v-else />
         
         <vue-awesome-paginate
             :total-items="50"

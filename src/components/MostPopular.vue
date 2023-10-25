@@ -2,6 +2,7 @@
 
 import SpecialHeader from "../components/SpecialHeader.vue";
 import MovieCard from "../components/MovieCard.vue";
+import SpinLoader from "./SpinLoader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -11,6 +12,7 @@ export default {
         MovieCard,
         Swiper,
         SwiperSlide,
+        SpinLoader
     },
     data() {
         return {
@@ -90,6 +92,7 @@ export default {
         </special-header>
 
         <swiper
+            v-if="mostPopular.length"
             class="swiper-container mt-10 overflow-y-visible"
             :modules="modules"
             :space-between="10"
@@ -104,6 +107,8 @@ export default {
                 />
             </swiper-slide>
         </swiper>
+
+        <spin-loader v-else />
         
         <vue-awesome-paginate
             :total-items="50"
@@ -121,7 +126,6 @@ export default {
                 <i class="fa-solid fa-angle-right"></i>
             </template>
         </vue-awesome-paginate>
-
     </div>
 
 </template>
