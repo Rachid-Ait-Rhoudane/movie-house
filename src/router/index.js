@@ -9,9 +9,9 @@ const router = createRouter({
       component: () => import('../views/HomeView.vue')
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
+      path: '/movie/:id',
+      name: 'movie',
+      component: () => import('../views/MovieView.vue')
     }
   ],
   linkActiveClass: 'active'
