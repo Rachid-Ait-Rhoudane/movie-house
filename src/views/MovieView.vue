@@ -1,14 +1,20 @@
 <script>
 
 import SpecialHeader from "../components/SpecialHeader.vue";
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export default {
     components: {
-        SpecialHeader
+        SpecialHeader,
+        Swiper,
+        SwiperSlide
     },
     data() {
         return {
-            movie: null
+            movie: null,
+            modules: [Navigation],
+            images: null
         }
     },
     created() {
@@ -22,10 +28,12 @@ export default {
 
         fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US`, options)
         .then(response => response.json())
-        .then(response => {
-            this.movie = response;
-            console.log(this.movie);
-        })
+        .then(response => {this.movie = response;})
+        .catch(err => console.error(err));
+
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/images`, options)
+        .then(response => response.json())
+        .then(response => this.images = response.backdrops)
         .catch(err => console.error(err));
     }
 }
@@ -50,32 +58,66 @@ export default {
                     <p class="text-base md:text-xl">{{ movie.overview }}</p>
                 </div>
             </div>
-            <div class="my-10">
+            <div class="my-20">
                 <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
-                    general information
+                    Trailers
                 </h1>
-                <div class="bg-secondary/80 mt-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 justify-center">
+                <swiper
+                    class="swiper-container mt-10"
+                    :slides-per-view="1"
+                    :modules="modules"
+                    :space-between="10"
+                    :breakpoints="breakpoints"
+                    navigation
+                >
+                    <swiper-slide class="flex justify-center items-center" v-for="image in images" :key="image.file_path">
+                        <img class="w-full aspect-video" :src="`https://image.tmdb.org/t/p/original${image.file_path}`" alt="movie image">
+                    </swiper-slide>
+                </swiper>
+            </div>
+            <div class="my-20">
+                <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
+                    Numbers
+                </h1>
+                <div class="bg-secondary/80 mt-10 py-10 grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 justify-center">
                     <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-hourglass-start text-3xl sm:text-6xl text-primary"></i>
+                        <i class="fa-solid fa-hourglass-start text-6xl text-primary"></i>
                         <span class="block font-bold text-gray-300">Runtime </span>
                         {{ movie.runtime }} min
                     </div>
                     <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-dollar-sign text-3xl sm:text-6xl text-primary"></i>
+                        <i class="fa-solid fa-dollar-sign text-6xl text-primary"></i>
                         <span class="block font-bold text-gray-300">Budget </span>
                         {{ movie.budget }}
                     </div>
                     <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-sack-dollar text-3xl sm:text-6xl text-primary"></i>
+                        <i class="fa-solid fa-sack-dollar text-6xl text-primary"></i>
                         <span class="block font-bold text-gray-300">Revenue </span>
                         {{ movie.revenue }}
                     </div>
                     <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-chart-line text-3xl sm:text-6xl text-primary"></i>
+                        <i class="fa-solid fa-chart-line text-6xl text-primary"></i>
                         <span class="block font-bold text-gray-300">Popularity </span>
                         {{ movie.popularity }}
                     </div>
                 </div>
+            </div>
+            <div class="my-20">
+                <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
+                    Images
+                </h1>
+                <swiper
+                    class="swiper-container mt-10"
+                    :slides-per-view="1"
+                    :modules="modules"
+                    :space-between="10"
+                    :breakpoints="breakpoints"
+                    navigation
+                >
+                    <swiper-slide class="flex justify-center items-center" v-for="image in images" :key="image.file_path">
+                        <img class="w-full aspect-video" :src="`https://image.tmdb.org/t/p/original${image.file_path}`" alt="movie image">
+                    </swiper-slide>
+                </swiper>
             </div>
         </div>
     </div>  
