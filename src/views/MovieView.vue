@@ -69,7 +69,8 @@ export default {
                     Trailers
                 </h1>
                 <swiper
-                    class="mt-10"
+                    id="video-swiper"
+                    class="w-full lg:w-3/4 mt-10"
                     :slides-per-view="1"
                     :modules="modules"
                     :space-between="10"
@@ -77,9 +78,8 @@ export default {
                 >
                     <template v-for="video in videos" :key="video.key">
                         <swiper-slide v-if="video.type == 'Trailer'" class="flex justify-center items-center">
-                            <video class="w-full aspect-video" controls="controls">
-                                <source :src="`https://www.youtube.com/watch?v=${video.key}`" type="video/mp4" />
-                            </video>
+                            <iframe class="w-full aspect-video" :src="`https://www.youtube.com/embed/${video.key}`">
+                            </iframe>
                         </swiper-slide>
                     </template>
                 </swiper>
@@ -116,7 +116,7 @@ export default {
                     Images
                 </h1>
                 <swiper
-                    class="mt-10"
+                    class="w-full lg:w-3/4 mt-10"
                     :slides-per-view="1"
                     :modules="modules"
                     :space-between="10"
