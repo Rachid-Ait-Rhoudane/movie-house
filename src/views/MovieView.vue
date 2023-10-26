@@ -14,7 +14,8 @@ export default {
         return {
             movie: null,
             modules: [Navigation],
-            images: null
+            images: null,
+            videos: null
         }
     },
     created() {
@@ -34,6 +35,11 @@ export default {
         fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/images`, options)
         .then(response => response.json())
         .then(response => this.images = response.backdrops)
+        .catch(err => console.error(err));
+
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?language=en-US`, options)
+        .then(response => response.json())
+        .then(response => this.videos = response.results)
         .catch(err => console.error(err));
     }
 }
@@ -63,16 +69,19 @@ export default {
                     Trailers
                 </h1>
                 <swiper
-                    class="swiper-container mt-10"
+                    class="mt-10"
                     :slides-per-view="1"
                     :modules="modules"
                     :space-between="10"
-                    :breakpoints="breakpoints"
                     navigation
                 >
-                    <swiper-slide class="flex justify-center items-center" v-for="image in images" :key="image.file_path">
-                        <img class="w-full aspect-video" :src="`https://image.tmdb.org/t/p/original${image.file_path}`" alt="movie image">
-                    </swiper-slide>
+                    <template v-for="video in videos" :key="video.key">
+                        <swiper-slide v-if="video.type == 'Trailer'" class="flex justify-center items-center">
+                            <video class="w-full aspect-video" controls="controls">
+                                <source :src="`https://www.youtube.com/watch?v=${video.key}`" type="video/mp4" />
+                            </video>
+                        </swiper-slide>
+                    </template>
                 </swiper>
             </div>
             <div class="my-20">
@@ -107,11 +116,10 @@ export default {
                     Images
                 </h1>
                 <swiper
-                    class="swiper-container mt-10"
+                    class="mt-10"
                     :slides-per-view="1"
                     :modules="modules"
                     :space-between="10"
-                    :breakpoints="breakpoints"
                     navigation
                 >
                     <swiper-slide class="flex justify-center items-center" v-for="image in images" :key="image.file_path">
