@@ -116,7 +116,3 @@ left: 0 !important;
 .swiper-button-prev::after {
 color: orange;
 }
-
-.swiper-button-disabled:hover {
-cursor: not-allowed !important;
-}
