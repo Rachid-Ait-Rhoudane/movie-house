@@ -29,10 +29,10 @@ export default {
                     </router-link>
                 </li>
                 <li class="text-xl hover:text-gray-300">
-                    <router-link class="block p-4" to="/about">
+                    <a href="#" class="block p-4">
                         <i class="fa-solid fa-bookmark"></i>
                         My Movies
-                    </router-link>
+                    </a>
                 </li>
             </ul>
         </div>
