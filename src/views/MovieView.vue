@@ -3,6 +3,7 @@
 import SpecialHeader from "../components/SpecialHeader.vue";
 import MovieGeneralInfo from "../components/MovieGeneralInfo.vue";
 import MovieNumbers from "../components/MovieNumbers.vue";
+import MovieTrailers from "../components/MovieTrailers.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -11,6 +12,7 @@ export default {
         SpecialHeader,
         MovieGeneralInfo,
         MovieNumbers,
+        MovieTrailers,
         Swiper,
         SwiperSlide
     },
@@ -69,27 +71,10 @@ export default {
                 :revenue="movie.revenue"
                 :popularity="movie.popularity"
             />
-            
-            <div class="my-20">
-                <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
-                    Trailers
-                </h1>
-                <swiper
-                    id="video-swiper"
-                    class="w-full lg:w-3/4 mt-10"
-                    :slides-per-view="1"
-                    :modules="modules"
-                    :space-between="10"
-                    navigation
-                >
-                    <template v-for="video in videos" :key="video.key">
-                        <swiper-slide v-if="video.type == 'Trailer'" class="flex justify-center items-center">
-                            <iframe class="w-full aspect-video" :src="`https://www.youtube.com/embed/${video.key}`">
-                            </iframe>
-                        </swiper-slide>
-                    </template>
-                </swiper>
-            </div>
+
+            <movie-trailers 
+                :id="$route.params.id"
+            />
             <div class="my-20">
                 <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
                     Images
