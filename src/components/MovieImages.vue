@@ -1,10 +1,12 @@
 <script>
 
+import SpecialHeader from "./SpecialHeader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export default {
     components: {
+        SpecialHeader,
         Swiper,
         SwiperSlide
     },
@@ -41,9 +43,11 @@ export default {
 <template>
 
     <div v-if="images" class="my-20">
-        <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
-            Images
-        </h1>
+        <special-header>
+            <template #title>
+                Images
+            </template>
+        </special-header>
         <swiper
             class="w-full lg:w-3/4 mt-10"
             :slides-per-view="1"

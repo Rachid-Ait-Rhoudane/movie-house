@@ -1,6 +1,11 @@
 <script>
 
+import SpecialHeader from "./SpecialHeader.vue";
+
 export default {
+    components: {
+        SpecialHeader
+    },
     props: {
         runtime: {
             type: Number,
@@ -25,9 +30,11 @@ export default {
 
 <template>
     <div class="my-20">
-        <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
-            Numbers
-        </h1>
+        <special-header>
+            <template #title>
+                Numbers
+            </template>
+        </special-header>
         <div class="bg-secondary/80 mt-10 py-10 grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 justify-center">
             <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
                 <i class="fa-solid fa-hourglass-start text-6xl text-primary"></i>

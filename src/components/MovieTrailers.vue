@@ -1,10 +1,12 @@
 <script>
 
+import SpecialHeader from "./SpecialHeader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export default {
     components: {
+        SpecialHeader,
         Swiper,
         SwiperSlide
     },
@@ -28,7 +30,7 @@ export default {
                 Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjI3MTdlOTU1ZmU3M2Y1OTkxNGU4NDU3ZWRiZGU1MyIsInN1YiI6IjY1MzNiOGMwOGNmY2M3MDBjODNkNjVjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VCBH0D_Q6oZ5JcoXZyIrCFbWIpOSxRFL54ZefY6koXs'
             }
         };
-        
+
         fetch(`https://api.themoviedb.org/3/movie/${this.id}/videos?language=en-US`, options)
         .then(response => response.json())
         .then(response => {
@@ -45,9 +47,11 @@ export default {
 <template>
 
     <div v-if="trailers" class="my-20">
-        <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
-            Trailers
-        </h1>
+        <special-header>
+            <template #title>
+                Trailers
+            </template>
+        </special-header>
         <swiper
             id="video-swiper"
             class="w-full lg:w-3/4 mt-10"

@@ -1,31 +1,22 @@
 <script>
 
-import SpecialHeader from "../components/SpecialHeader.vue";
 import MovieGeneralInfo from "../components/MovieGeneralInfo.vue";
 import MovieNumbers from "../components/MovieNumbers.vue";
 import MovieTrailers from "../components/MovieTrailers.vue";
 import MovieImages from "../components/MovieImages.vue";
 import MovieVideos from "../components/MovieVideos.vue";
-import { Navigation } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/vue';
 
 export default {
     components: {
-        SpecialHeader,
         MovieGeneralInfo,
         MovieNumbers,
         MovieTrailers,
         MovieImages,
         MovieVideos,
-        Swiper,
-        SwiperSlide
     },
     data() {
         return {
             movie: null,
-            modules: [Navigation],
-            images: null,
-            videos: null
         }
     },
     created() {
@@ -40,16 +31,6 @@ export default {
         fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US`, options)
         .then(response => response.json())
         .then(response => {this.movie = response;})
-        .catch(err => console.error(err));
-
-        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/images`, options)
-        .then(response => response.json())
-        .then(response => this.images = response.backdrops)
-        .catch(err => console.error(err));
-
-        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?language=en-US`, options)
-        .then(response => response.json())
-        .then(response => this.videos = response.results)
         .catch(err => console.error(err));
     }
 }
@@ -77,15 +58,15 @@ export default {
             />
 
             <movie-trailers 
-                :id="$route.params.id"
+                :id="+$route.params.id"
             />
             
             <movie-images
-                :id="$route.params.id"
+                :id="+$route.params.id"
             />
-            
+
             <movie-videos
-                :id="$route.params.id"
+                :id="+$route.params.id"
             />
         </div>
     </div>  
