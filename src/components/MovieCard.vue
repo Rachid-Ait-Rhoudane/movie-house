@@ -17,6 +17,10 @@ export default {
         }
     },
     props: {
+        id: {
+            type: Number,
+            required: true
+        },
         poster: {
             type: String,
             required: true
@@ -49,7 +53,7 @@ export default {
             </span>
         </div>
         <div class="py-2 m-2 border-t-2 border-t-white flex justify-between items-center text-white">
-            <button class="capitalize font-bold cursor-pointer" type="button">read more</button>
+            <router-link :to="{name: 'movie', params: {id: id}}" class="capitalize font-bold cursor-pointer" type="button">read more</router-link>
             <i class="fa-solid fa-right-long group-hover:animate-bounce-left-right text-primary text-xl"></i>
         </div>
     </div>

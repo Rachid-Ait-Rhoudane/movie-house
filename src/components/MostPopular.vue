@@ -100,7 +100,8 @@ export default {
             navigation
         >
             <swiper-slide class="flex justify-center items-center" v-for="movie in mostPopular" :key="movie.id">
-                <movie-card 
+                <movie-card
+                    :id="movie.id" 
                     :poster="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
                     :title="movie.original_title"
                     :rate="movie.vote_average" 
