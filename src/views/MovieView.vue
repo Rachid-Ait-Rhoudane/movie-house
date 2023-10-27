@@ -6,9 +6,11 @@ import MovieTrailers from "../components/MovieTrailers.vue";
 import MovieImages from "../components/MovieImages.vue";
 import MovieVideos from "../components/MovieVideos.vue";
 import MovieCast from "../components/MovieCast.vue";
+import MovieReviews from "../components/MovieReviews.vue";
 
 export default {
     components: {
+        MovieReviews,
         MovieGeneralInfo,
         MovieNumbers,
         MovieTrailers,
@@ -72,6 +74,10 @@ export default {
             />
 
             <movie-cast
+                :id="movie.id"
+            />
+
+            <movie-reviews 
                 :id="movie.id"
             />
 
