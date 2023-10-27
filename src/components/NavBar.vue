@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <nav class="absolute top-0 left-1/2 -translate-x-1/2 z-30 container py-2 text-white flex justify-between items-center">
+    <nav class="absolute bg-black/80 top-0 left-1/2 -translate-x-1/2 z-30 container py-2 text-white flex justify-between items-center">
         <div class="flex items-center gap-10">
             <a href="/">
                 <img class="w-14 h-14" src="/images/Movie-House-logo.png" alt="logo">
