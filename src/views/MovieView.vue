@@ -5,6 +5,7 @@ import MovieNumbers from "../components/MovieNumbers.vue";
 import MovieTrailers from "../components/MovieTrailers.vue";
 import MovieImages from "../components/MovieImages.vue";
 import MovieVideos from "../components/MovieVideos.vue";
+import MovieCast from "../components/MovieCast.vue";
 
 export default {
     components: {
@@ -13,6 +14,7 @@ export default {
         MovieTrailers,
         MovieImages,
         MovieVideos,
+        MovieCast
     },
     data() {
         return {
@@ -58,16 +60,21 @@ export default {
             />
 
             <movie-trailers 
-                :id="+$route.params.id"
+                :id="movie.id"
             />
             
             <movie-images
-                :id="+$route.params.id"
+                :id="movie.id"
             />
 
             <movie-videos
-                :id="+$route.params.id"
+                :id="movie.id"
             />
+
+            <movie-cast
+                :id="movie.id"
+            />
+
         </div>
     </div>  
 </template>
