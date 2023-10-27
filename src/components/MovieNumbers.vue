@@ -1,0 +1,54 @@
+<script>
+
+export default {
+    props: {
+        runtime: {
+            type: Number,
+            required: true
+        },
+        budget: {
+            type: Number,
+            required: true
+        },
+        revenue: {
+            type: Number,
+            required: true
+        },
+        popularity: {
+            type: Number,
+            required: true
+        }
+    }
+}
+
+</script>
+
+<template>
+    <div class="my-20">
+        <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
+            Numbers
+        </h1>
+        <div class="bg-secondary/80 mt-10 py-10 grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 justify-center">
+            <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
+                <i class="fa-solid fa-hourglass-start text-6xl text-primary"></i>
+                <span class="block font-bold text-gray-300">Runtime </span>
+                {{ runtime }} min
+            </div>
+            <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
+                <i class="fa-solid fa-dollar-sign text-6xl text-primary"></i>
+                <span class="block font-bold text-gray-300">Budget </span>
+                {{ budget }}
+            </div>
+            <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
+                <i class="fa-solid fa-sack-dollar text-6xl text-primary"></i>
+                <span class="block font-bold text-gray-300">Revenue </span>
+                {{ revenue }}
+            </div>
+            <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
+                <i class="fa-solid fa-chart-line text-6xl text-primary"></i>
+                <span class="block font-bold text-gray-300">Popularity </span>
+                {{ popularity }}
+            </div>
+        </div>
+    </div>
+</template>

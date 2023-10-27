@@ -2,6 +2,7 @@
 
 import SpecialHeader from "../components/SpecialHeader.vue";
 import MovieGeneralInfo from "../components/MovieGeneralInfo.vue";
+import MovieNumbers from "../components/MovieNumbers.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -9,6 +10,7 @@ export default {
     components: {
         SpecialHeader,
         MovieGeneralInfo,
+        MovieNumbers,
         Swiper,
         SwiperSlide
     },
@@ -52,6 +54,7 @@ export default {
     <div v-if="movie" class="relative overflow-x-hidden w-screen h-screen before:fixed before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
         <img class="fixed top-0 left-0 w-full h-full object-cover" :src="`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`" alt="movie backdrop">
         <div class="relative z-20 container mt-24">
+
             <movie-general-info 
                 :poster="movie.poster_path"
                 :title="movie.title"
@@ -59,33 +62,14 @@ export default {
                 :rate="movie.vote_average"
                 :overview="movie.overview"
             />
-            <div class="my-20">
-                <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
-                    Numbers
-                </h1>
-                <div class="bg-secondary/80 mt-10 py-10 grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 justify-center">
-                    <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-hourglass-start text-6xl text-primary"></i>
-                        <span class="block font-bold text-gray-300">Runtime </span>
-                        {{ movie.runtime }} min
-                    </div>
-                    <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-dollar-sign text-6xl text-primary"></i>
-                        <span class="block font-bold text-gray-300">Budget </span>
-                        {{ movie.budget }}
-                    </div>
-                    <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-sack-dollar text-6xl text-primary"></i>
-                        <span class="block font-bold text-gray-300">Revenue </span>
-                        {{ movie.revenue }}
-                    </div>
-                    <div class="text-white flex flex-col gap-2 items-center text-base sm:text-3xl">
-                        <i class="fa-solid fa-chart-line text-6xl text-primary"></i>
-                        <span class="block font-bold text-gray-300">Popularity </span>
-                        {{ movie.popularity }}
-                    </div>
-                </div>
-            </div>
+
+            <movie-numbers 
+                :runtime="movie.runtime"
+                :budget="movie.budget"
+                :revenue="movie.revenue"
+                :popularity="movie.popularity"
+            />
+            
             <div class="my-20">
                 <h1 class="text-3xl md:text-6xl font-bold py-1 md:py-2 px-1 md:px-2 border-l-[5px] md:border-l-[10px] border-l-primary capitalize text-white">
                     Trailers
