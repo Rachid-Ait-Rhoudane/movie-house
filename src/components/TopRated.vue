@@ -82,7 +82,7 @@ export default {
 <template>
 
     <div class="py-16">
-        <special-header>
+        <special-header class="container">
             <template #title>
                 Top Rated
             </template>
