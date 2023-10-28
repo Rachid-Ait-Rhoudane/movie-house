@@ -23,12 +23,6 @@ export default {
       }
     }
   },
-  props: {
-    id: {
-        type: Number,
-        required: true
-    }
-  },
   components: {
     SpecialHeader,
     MovieFeedback,
@@ -44,10 +38,18 @@ export default {
         }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/${this.id}/reviews?language=en-US&page=1`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/reviews?language=en-US&page=1`, options)
         .then(response => response.json())
         .then(response => this.reviews = response.results)
         .catch(err => console.error(err));
+
+        this.$watch(() => this.$route.params, () => {
+          fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/reviews?language=en-US&page=1`, options)
+          .then(response => response.json())
+          .then(response => this.reviews = response.results)
+          .catch(err => console.error(err));
+        })
+
     },
 }
 

@@ -70,29 +70,17 @@ export default {
                 :popularity="movie.popularity"
             />
 
-            <movie-trailers 
-                :id="movie.id"
-            />
+            <movie-trailers />
             
-            <movie-images
-                :id="movie.id"
-            />
+            <movie-images />
 
-            <movie-videos
-                :id="movie.id"
-            />
+            <movie-videos />
 
-            <movie-cast
-                :id="movie.id"
-            />
+            <movie-cast />
 
-            <movie-reviews 
-                :id="movie.id"
-            />
+            <movie-reviews />
 
-            <movie-similar 
-                :id="movie.id"
-            />
+            <movie-similar />
 
 
         </div>

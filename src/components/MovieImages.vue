@@ -16,12 +16,6 @@ export default {
             images: null
         }
     },
-    props: {
-        id: {
-            type: Number,
-            required: true
-        }
-    },
     created(){
         const options = {
             method: 'GET',
@@ -31,10 +25,17 @@ export default {
             }
         };
         
-        fetch(`https://api.themoviedb.org/3/movie/${this.id}/images`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/images`, options)
         .then(response => response.json())
         .then(response => this.images = response.backdrops)
         .catch(err => console.error(err));
+
+        this.$watch(() => this.$route.params, () => {
+            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/images`, options)
+            .then(response => response.json())
+            .then(response => this.images = response.backdrops)
+            .catch(err => console.error(err));
+        })
     }
 }
 

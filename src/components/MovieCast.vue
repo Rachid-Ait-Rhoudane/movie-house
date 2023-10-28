@@ -29,12 +29,6 @@ export default {
       }
     }
   },
-  props: {
-    id: {
-        type: Number,
-        required: true
-    }
-  },
   components: {
     SpecialHeader,
     MovieActor,
@@ -50,10 +44,18 @@ export default {
         }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/${this.id}/credits?language=en-US`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/credits?language=en-US`, options)
         .then(response => response.json())
         .then(response => this.actors = response.cast.filter((cast) => cast.known_for_department==="Acting"))
         .catch(err => console.error(err));
+
+        this.$watch(() => this.$route.params, () => {
+          fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/credits?language=en-US`, options)
+          .then(response => response.json())
+          .then(response => this.actors = response.cast.filter((cast) => cast.known_for_department==="Acting"))
+          .catch(err => console.error(err));
+        })
+
     },
 }
 
