@@ -39,7 +39,7 @@ export default {
         .then(response => {this.movie = response;})
         .catch(err => console.error(err));
 
-        this.$watch(() => this.$route.params, function() {
+        this.$watch(() => this.$route.params, () => {
             fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US`, options)
             .then(response => response.json())
             .then(response => {this.movie = response;})
