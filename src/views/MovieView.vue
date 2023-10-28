@@ -82,7 +82,6 @@ export default {
 
             <movie-similar />
 
-
         </div>
     </div>  
 </template>
