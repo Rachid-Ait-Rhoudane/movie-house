@@ -56,6 +56,7 @@ export default {
         <div class="relative z-20 container mt-24">
 
             <movie-general-info 
+                :key="movie.id"
                 :poster="movie.poster_path"
                 :title="movie.title"
                 :genres="movie.genres"
@@ -64,23 +65,42 @@ export default {
             />
 
             <movie-numbers 
+                :key="movie.id"
                 :runtime="movie.runtime"
                 :budget="movie.budget"
                 :revenue="movie.revenue"
                 :popularity="movie.popularity"
             />
 
-            <movie-trailers />
+            <movie-trailers
+                :key="movie.id"
+                :id="movie.id"
+            />
             
-            <movie-images />
+            <movie-images 
+                :key="movie.id"
+                :id="movie.id"
+            />
 
-            <movie-videos />
+            <movie-videos 
+                :key="movie.id"
+                :id="movie.id"
+            />
 
-            <movie-cast />
+            <movie-cast 
+                :key="movie.id"
+                :id="movie.id"
+            />
 
-            <movie-reviews />
+            <movie-reviews 
+                :key="movie.id"
+                :id="movie.id"
+            />
 
-            <movie-similar />
+            <movie-similar 
+                :key="movie.id"
+                :id="movie.id"
+            />
 
         </div>
     </div>  

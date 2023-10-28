@@ -16,6 +16,12 @@ export default {
             videos: null
         }
     },
+    props: {
+        id: {
+            type: Number,
+            required: true
+        }
+    },
     created(){
         const options = {
             method: 'GET',
@@ -25,7 +31,7 @@ export default {
             }
         };
         
-        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?language=en-US`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${this.id}/videos?language=en-US`, options)
         .then(response => response.json())
         .then(response => {
             this.videos = response.results.filter((video) => {
@@ -33,17 +39,6 @@ export default {
             })
         })
         .catch(err => console.error(err));
-
-        this.$watch(() => this.$route.params, () => {
-            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/videos?language=en-US`, options)
-            .then(response => response.json())
-            .then(response => {
-                this.videos = response.results.filter((video) => {
-                    return video.type !== 'Trailer';
-                })
-            })
-            .catch(err => console.error(err));
-        })
     }
 }
 
