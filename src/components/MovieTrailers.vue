@@ -46,7 +46,7 @@ export default {
 
 <template>
 
-    <div v-if="trailers" class="my-20">
+    <div v-if="trailers && Array.from(trailers).length" class="my-20">
         <special-header>
             <template #title>
                 Trailers
@@ -65,7 +65,6 @@ export default {
                 </iframe>
             </swiper-slide>
         </swiper>
-
     </div>
 
 </template>

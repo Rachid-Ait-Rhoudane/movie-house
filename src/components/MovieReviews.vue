@@ -55,7 +55,7 @@ export default {
 
 <template>
   
-  <div v-if="reviews" class="my-20">
+  <div v-if="reviews && Array.from(reviews).length" class="my-20">
 
     <special-header>
         <template #title>

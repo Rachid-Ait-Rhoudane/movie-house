@@ -50,7 +50,7 @@ export default {
 
 <template>
 
-    <div v-if="images" class="my-20">
+    <div v-if="images && Array.from(images).length" class="my-20">
         <special-header>
             <template #title>
                 Images

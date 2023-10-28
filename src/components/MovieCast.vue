@@ -61,7 +61,7 @@ export default {
 
 <template>
   
-    <div v-if="actors" class="my-20">
+    <div v-if="actors && Array.from(actors).length" class="my-20">
         <special-header>
             <template #title>
                 actors

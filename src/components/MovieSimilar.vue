@@ -71,7 +71,7 @@ export default {
 
 <template>
 
-    <div v-if="similar" class="my-20">
+    <div v-if="similar && Array.from(similar).length" class="my-20">
         <special-header>
             <template #title>
                 similar
