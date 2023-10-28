@@ -63,7 +63,7 @@ export default {
         </template>
     </special-header>
     <swiper
-        class="swiper-container mt-10 overflow-y-visible"
+        class="swiper-container mt-10"
         :modules="modules"
         :space-between="10"
         :breakpoints="breakpoints"
