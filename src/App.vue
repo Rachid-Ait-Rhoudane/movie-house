@@ -11,8 +11,13 @@ export default {
 
 <template>
 
-  <nav-bar />
-  <router-view></router-view>
+  <header class="bg-black/80">
+    <nav-bar />
+  </header>
+
+  <main>
+    <router-view />
+  </main>
 
 </template>
 

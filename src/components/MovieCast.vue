@@ -25,10 +25,7 @@ export default {
         },
         1024: {
           slidesPerView: 5,
-        },
-        1280: {
-          slidesPerView: 6,
-        },
+        }
       }
     }
   },
