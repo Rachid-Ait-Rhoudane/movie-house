@@ -1,6 +1,16 @@
 <script>
 
+import ImgLoader from './ImgLoader.vue';
+
 export default {
+    components: {
+        ImgLoader
+    },
+    data() {
+        return {
+            showImg: false
+        }
+    },
     props: {
         profile: {
             type: String,
@@ -28,6 +38,9 @@ export default {
             } else {
                 e.target.src = "/images/woman.png";
             }
+        },
+        imgLoaded() {
+            this.showImg = true;
         }
     }
 }
@@ -36,7 +49,8 @@ export default {
 
 <template>
     <div class="flex flex-col items-center justify-center text-white gap-4">
-        <img @error="imageLoadOnError" class="w-40 aspect-square rounded-full" :src="`https://image.tmdb.org/t/p/original/${profile}`" alt="cast profile">
+        <img v-show="showImg" @load="imgLoaded" @error="imageLoadOnError" class="w-40 aspect-square rounded-full" :src="`https://image.tmdb.org/t/p/original/${profile}`" alt="cast profile">
+        <img-loader v-show="!showImg" class="w-40 aspect-square rounded-full" />
         <div class="flex flex-col items-center justify-center gap-1">
             <span class="text-base md:text-xl">{{ name }}</span>
             <span class="text-sm md:text-base">{{ character }}</span>

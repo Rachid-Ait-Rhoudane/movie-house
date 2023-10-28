@@ -1,5 +1,6 @@
 <script>
 
+import ImgLoader from './ImgLoader.vue';
 import SpecialHeader from "./SpecialHeader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -8,18 +9,25 @@ export default {
     components: {
         SpecialHeader,
         Swiper,
-        SwiperSlide
+        SwiperSlide,
+        ImgLoader
     },
     data() {
         return {
             modules: [Navigation],
-            images: null
+            images: null,
+            showImg: false
         }
     },
     props: {
         id: {
             type: Number,
             required: true
+        }
+    },
+    methods: {
+        imgLoaded() {
+            this.showImg = true;
         }
     },
     created(){
@@ -56,7 +64,8 @@ export default {
             navigation
         >
             <swiper-slide class="flex justify-center items-center" v-for="image in images" :key="image.file_path">
-                <img class="w-full aspect-video" :src="`https://image.tmdb.org/t/p/original${image.file_path}`" alt="movie image">
+                <img v-show="showImg" @load="imgLoaded" class="w-full aspect-video" :src="`https://image.tmdb.org/t/p/original${image.file_path}`" alt="movie image">
+                <img-loader v-show="!showImg" class="w-full aspect-video" />
             </swiper-slide>
         </swiper>
     </div>
