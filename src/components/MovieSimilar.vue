@@ -2,7 +2,6 @@
 
 import SpecialHeader from "../components/SpecialHeader.vue";
 import MovieCard from "../components/MovieCard.vue";
-import SpinLoader from "./SpinLoader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -12,7 +11,6 @@ export default {
         MovieCard,
         Swiper,
         SwiperSlide,
-        SpinLoader
     },
     data() {
         return {
@@ -73,7 +71,7 @@ export default {
 
 <template>
 
-    <div class="my-20">
+    <div v-if="similar" class="my-20">
         <special-header>
             <template #title>
                 similar
@@ -81,7 +79,6 @@ export default {
         </special-header>
 
         <swiper
-            v-if="similar"
             class="swiper-container mt-10 overflow-y-visible"
             :modules="modules"
             :space-between="10"
@@ -97,8 +94,6 @@ export default {
                 />
             </swiper-slide>
         </swiper>
-
-        <spin-loader v-else />
     </div>
 
 </template>

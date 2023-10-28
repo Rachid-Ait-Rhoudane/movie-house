@@ -109,7 +109,7 @@ export default {
             </swiper-slide>
         </swiper>
 
-        <spin-loader v-else />
+        <spin-loader class="swiper-container h-[408.8px]" v-else />
         
         <vue-awesome-paginate
             :total-items="50"
