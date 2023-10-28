@@ -7,6 +7,7 @@ import MovieImages from "../components/MovieImages.vue";
 import MovieVideos from "../components/MovieVideos.vue";
 import MovieCast from "../components/MovieCast.vue";
 import MovieReviews from "../components/MovieReviews.vue";
+import MovieSimilar from "../components/MovieSimilar.vue";
 
 export default {
     components: {
@@ -16,7 +17,8 @@ export default {
         MovieTrailers,
         MovieImages,
         MovieVideos,
-        MovieCast
+        MovieCast,
+        MovieSimilar
     },
     data() {
         return {
@@ -36,6 +38,13 @@ export default {
         .then(response => response.json())
         .then(response => {this.movie = response;})
         .catch(err => console.error(err));
+
+        this.$watch(() => this.$route.params, function() {
+            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US`, options)
+            .then(response => response.json())
+            .then(response => {this.movie = response;})
+            .catch(err => console.error(err));
+        })
     }
 }
 
@@ -80,6 +89,11 @@ export default {
             <movie-reviews 
                 :id="movie.id"
             />
+
+            <movie-similar 
+                :id="movie.id"
+            />
+
 
         </div>
     </div>  
