@@ -1,6 +1,21 @@
 <script>
 
+import ImgLoader from './ImgLoader.vue';
+
 export default {
+    components: {
+        ImgLoader
+    },
+    data() {
+        return {
+            showImg: false
+        }
+    },
+    methods: {
+        imgLoaded() {
+            this.showImg = true;
+        }
+    },
     props: {
         poster: {
             type: String,
@@ -30,7 +45,8 @@ export default {
 <template>
 
     <div class="flex items-center flex-col sm:flex-row gap-4 w-full">
-        <img class="w-80 aspect-[3/4]" :src="`https://image.tmdb.org/t/p/original/${poster}`" alt="poster image">
+        <img v-show="showImg" @load="imgLoaded" class="w-80 aspect-[3/4]" :src="`https://image.tmdb.org/t/p/original/${poster}`" alt="poster image">
+        <img-loader class="w-80 aspect-[3/4]" v-show="!showImg" />
         <div class="flex flex-col gap-5 text-white">
             <h1 class="text-3xl md:text-6xl font-bold">{{ title }}</h1>
             <div class="flex items-center gap-2">
