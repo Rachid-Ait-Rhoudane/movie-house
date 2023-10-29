@@ -1,6 +1,6 @@
 <script>
 
-import VideoLoader from "./VideoLoader.vue"
+import VideoLoader from "./VideoLoader.vue";
 import SpecialHeader from "./SpecialHeader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';

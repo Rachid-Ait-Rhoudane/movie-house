@@ -1,5 +1,6 @@
 <script>
 
+import VideoLoader from "./VideoLoader.vue";
 import SpecialHeader from "./SpecialHeader.vue";
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -8,12 +9,14 @@ export default {
     components: {
         SpecialHeader,
         Swiper,
-        SwiperSlide
+        SwiperSlide,
+        VideoLoader
     },
     data() {
         return {
             modules: [Navigation],
-            videos: null
+            videos: null,
+            showVideo: false
         }
     },
     props: {
@@ -22,6 +25,11 @@ export default {
             required: true
         }
     },
+    methods: {
+        videoLoaded() {
+            this.showVideo = true;
+        }
+    },   
     created(){
         const options = {
             method: 'GET',
@@ -61,8 +69,9 @@ export default {
             navigation
         >
             <swiper-slide v-for="video in videos" :key="video.key" class="flex justify-center items-center">
-                <iframe class="w-full aspect-video" :src="`https://www.youtube.com/embed/${video.key}`">
+                <iframe v-show="showVideo" @load="videoLoaded" class="w-full aspect-video" :src="`https://www.youtube.com/embed/${video.key}`">
                 </iframe>
+                <video-loader v-show="!showVideo" class="w-full aspect-video" />
             </swiper-slide>
         </swiper>
     </div>
