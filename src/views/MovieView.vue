@@ -44,13 +44,13 @@ export default {
             }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US&append_to_response=videos`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?append_to_response=videos,images`, options)
         .then(response => response.json())
         .then(response => {this.movie = response;})
         .catch(err => console.error(err));
 
         this.$watch(() => this.$route.params, () => {
-            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US&append_to_response=videos`, options)
+            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?append_to_response=videos,images`, options)
             .then(response => response.json())
             .then(response => {this.movie = response;})
             .catch(err => console.error(err));
@@ -95,7 +95,7 @@ export default {
             
             <movie-images 
                 :key="movie.id"
-                :id="movie.id"
+                :images="movie.images.backdrops"
             />
 
             <movie-videos 
