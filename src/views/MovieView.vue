@@ -44,13 +44,13 @@ export default {
             }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US&append_to_response=videos`, options)
         .then(response => response.json())
         .then(response => {this.movie = response;})
         .catch(err => console.error(err));
 
         this.$watch(() => this.$route.params, () => {
-            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US`, options)
+            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?language=en-US&append_to_response=videos`, options)
             .then(response => response.json())
             .then(response => {this.movie = response;})
             .catch(err => console.error(err));
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <template>
-    
+
     <div v-if="movie" class="relative overflow-x-hidden w-screen h-screen before:fixed before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
 
         <movie-backdrop
@@ -90,7 +90,7 @@ export default {
 
             <movie-trailers
                 :key="movie.id"
-                :id="movie.id"
+                :videos="movie.videos.results"
             />
             
             <movie-images 
