@@ -44,13 +44,13 @@ export default {
             }
         };
 
-        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?append_to_response=videos,images,casts`, options)
+        fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?append_to_response=videos,images,casts,reviews`, options)
         .then(response => response.json())
         .then(response => {this.movie = response;})
         .catch(err => console.error(err));
 
         this.$watch(() => this.$route.params, () => {
-            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?append_to_response=videos,images,casts`, options)
+            fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?append_to_response=videos,images,casts,reviews`, options)
             .then(response => response.json())
             .then(response => {this.movie = response;})
             .catch(err => console.error(err));
@@ -110,7 +110,7 @@ export default {
 
             <movie-reviews 
                 :key="movie.id"
-                :id="movie.id"
+                :reviews="movie.reviews.results"
             />
 
             <movie-similar 
