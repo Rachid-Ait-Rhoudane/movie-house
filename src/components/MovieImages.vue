@@ -54,8 +54,5 @@ export default {
             </swiper-slide>
         </swiper>
     </div>
-    <div class="my-20 text-white" v-else>
-        No images found
-    </div>
-
+    
 </template>

@@ -100,7 +100,7 @@ export default {
 
             <movie-videos 
                 :key="movie.id"
-                :id="movie.id"
+                :videos="movie.videos.results"
             />
 
             <movie-cast 
