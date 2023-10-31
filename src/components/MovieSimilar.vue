@@ -15,7 +15,6 @@ export default {
     data() {
         return {
             currentPage: 1,
-            similar: null,
             modules: [Navigation],
             breakpoints: {
                 300: {
@@ -40,30 +39,10 @@ export default {
         }
     },
     props: {
-        id: {
-            type: Number,
+        similar: {
+            type: Array,
             required: true
         }
-    },
-    methods: {
-        onClickHandler(page) {
-            localStorage.setItem('currentPage', page);
-            this.currentPage = page
-        }
-    },
-    created() {
-        const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NjI3MTdlOTU1ZmU3M2Y1OTkxNGU4NDU3ZWRiZGU1MyIsInN1YiI6IjY1MzNiOGMwOGNmY2M3MDBjODNkNjVjYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VCBH0D_Q6oZ5JcoXZyIrCFbWIpOSxRFL54ZefY6koXs'
-        }
-        };
-
-        fetch(`https://api.themoviedb.org/3/movie/${this.id}/similar?language=en-US&page=1`, options)
-        .then(response => response.json())
-        .then(response => this.similar = response.results)
-        .catch(err => console.error(err));
     }
 }
 
@@ -71,7 +50,7 @@ export default {
 
 <template>
 
-    <div v-if="similar && Array.from(similar).length" class="my-20">
+    <div v-if="Array.from(similar).length" class="my-20">
         <special-header>
             <template #title>
                 similar
