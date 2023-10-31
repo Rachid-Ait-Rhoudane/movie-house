@@ -61,6 +61,7 @@ export default {
 </script>
 
 <template>
+    
     <div v-if="movie" class="relative overflow-x-hidden w-screen h-screen before:fixed before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
 
         <movie-backdrop
@@ -118,5 +119,6 @@ export default {
             />
 
         </div>
-    </div>  
+    </div>
+
 </template>
