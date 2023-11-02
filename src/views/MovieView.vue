@@ -1,7 +1,6 @@
 <script>
 
 import ImgRender from '../components/ImgRender.vue';
-import MovieBackdrop from '../components/MovieBackdrop.vue';
 import MovieGeneralInfo from "../components/MovieGeneralInfo.vue";
 import MovieNumbers from "../components/MovieNumbers.vue";
 import MovieTrailers from "../components/MovieTrailers.vue";
@@ -14,7 +13,6 @@ import MovieSimilar from "../components/MovieSimilar.vue";
 export default {
     components: {
         ImgRender,
-        MovieBackdrop,
         MovieReviews,
         MovieGeneralInfo,
         MovieNumbers,

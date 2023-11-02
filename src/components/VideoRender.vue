@@ -1,14 +1,14 @@
 <script>
 
-import ImgLoader from './ImgLoader.vue';
+import VideoLoader from './VideoLoader.vue';
 
 export default {
     components: {
-        ImgLoader
+        VideoLoader
     },
     data() {
         return {
-            showImg: false
+            showVideo: false
         }
     },
     props: {
@@ -21,10 +21,10 @@ export default {
         }
     },
     methods: {
-        imgLoaded() {
-            this.showImg = true;
+        videoLoaded() {
+            this.showVideo = true;
         },
-        imageLoadOnError(e) {
+        videoLoadOnError(e) {
             e.target.src = "/images/error.png";
         },
     }
@@ -33,6 +33,9 @@ export default {
 </script>
 
 <template>
-    <img v-show="showImg" @load="imgLoaded" @error="imageLoadOnError" :class="class" :src="path" alt="image">
-    <img-loader :class="class" v-show="!showImg" />
+
+    <iframe v-show="showVideo" @load="videoLoaded" @error="videoLoadOnError" :class="class" :src="path">
+    </iframe>
+    <video-loader v-show="!showVideo" :class="class" />
+
 </template>

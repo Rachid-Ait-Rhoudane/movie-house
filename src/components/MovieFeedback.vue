@@ -1,15 +1,10 @@
 <script>
 
-import ImgLoader from './ImgLoader.vue';
+import AvatarRender from './AvatarRender.vue';
 
 export default {
     components: {
-        ImgLoader
-    },
-    data() {
-        return {
-            showImg: false
-        }
+        AvatarRender
     },
     props: {
         avatar: {
@@ -31,14 +26,6 @@ export default {
             type: String,
             required: true
         }
-    },
-    methods: {
-        imageLoadOnError(e) {
-            e.target.src = "/images/not-specified.png";
-        },
-        imgLoaded() {
-            this.showImg = true;
-        }
     }
 }
 
@@ -49,8 +36,12 @@ export default {
     <div class="group flex flex-col justify-between bg-secondary/80 p-4 rounded-md min-h-[310px]">
         <div class="flex flex-col text-white gap-4 pb-2">
             <div class="flex flex-col lg:flex-row items-center gap-4">
-                <img v-show="showImg" @load="imgLoaded" @error="imageLoadOnError" class="w-14 rounded-full aspect-square" :src="`https://image.tmdb.org/t/p/original${avatar}`" alt="author avatar">
-                <img-loader v-show="!showImg" class="w-14 rounded-full aspect-square" />
+                           
+                <avatar-render 
+                    class="w-14 rounded-full aspect-square"
+                    :path="`https://image.tmdb.org/t/p/original${avatar}`"
+                />
+
                 <div class="text-base md:text-xl text-white flex flex-col items-center lg:items-start">
                     <span>{{ username }}</span>
                     <span v-if="rate" class="flex items-center gap-1">

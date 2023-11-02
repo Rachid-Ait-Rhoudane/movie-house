@@ -25,7 +25,13 @@ export default {
             this.showImg = true;
         },
         imageLoadOnError(e) {
-            e.target.src = "/images/error.png";
+            if(this.gender == 2) {
+                e.target.src = "/images/man.png";
+            } else if (this.gender == 0) {
+                e.target.src = "/images/not-specified.png";
+            } else {
+                e.target.src = "/images/woman.png";
+            }
         },
     }
 }
