@@ -1,20 +1,10 @@
 <script>
 
-import ImgLoader from './ImgLoader.vue';
+import ImgRender from './ImgRender.vue';
 
 export default {
     components: {
-        ImgLoader
-    },
-    data() {
-        return {
-            showImg: false
-        }
-    },
-    methods: {
-        imgLoaded() {
-            this.showImg = true;
-        }
+        ImgRender
     },
     props: {
         poster: {
@@ -45,8 +35,7 @@ export default {
 <template>
 
     <div class="flex items-center flex-col sm:flex-row gap-4 w-full">
-        <img v-show="showImg" @load="imgLoaded" class="w-80 aspect-[3/4]" :src="`https://image.tmdb.org/t/p/original/${poster}`" alt="poster image">
-        <img-loader class="w-80 aspect-[3/4]" v-show="!showImg" />
+        <img-render :path="`https://image.tmdb.org/t/p/original/${poster}`" class="w-80 aspect-[3/4]" />
         <div class="flex flex-col gap-5 text-white flex-1">
             <h1 class="text-3xl md:text-6xl font-bold">{{ title }}</h1>
             <div class="flex items-center gap-2">

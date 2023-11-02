@@ -1,6 +1,6 @@
 <script>
 
-import ImgLoader from '../components/ImgLoader.vue';
+import ImgRender from '../components/ImgRender.vue';
 import MovieBackdrop from '../components/MovieBackdrop.vue';
 import MovieGeneralInfo from "../components/MovieGeneralInfo.vue";
 import MovieNumbers from "../components/MovieNumbers.vue";
@@ -13,7 +13,7 @@ import MovieSimilar from "../components/MovieSimilar.vue";
 
 export default {
     components: {
-        ImgLoader,
+        ImgRender,
         MovieBackdrop,
         MovieReviews,
         MovieGeneralInfo,
@@ -27,12 +27,6 @@ export default {
     data() {
         return {
             movie: null,
-            showImg: false
-        }
-    },
-    methods: {
-        imgLoaded() {
-            this.showImg = true;
         }
     },
     created() {
@@ -64,9 +58,10 @@ export default {
 
     <div v-if="movie" class="relative overflow-x-hidden w-screen h-screen before:fixed before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
 
-        <movie-backdrop
-            :key="movie.id"
-            :backdrop="movie.backdrop_path"
+        <img-render 
+            :key="movie.id" 
+            :path="`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`" 
+            class="fixed top-0 left-0 w-full h-full object-cover"    
         />
 
         <div class="relative z-20 container mt-24">
