@@ -35,7 +35,12 @@ export default {
 <template>
 
     <div class="flex items-center flex-col sm:flex-row gap-4 w-full">
-        <img-render :path="`https://image.tmdb.org/t/p/original/${poster}`" class="w-80 aspect-[3/4]" />
+
+        <img-render 
+            :path="`https://image.tmdb.org/t/p/original/${poster}`" 
+            class="w-80 aspect-[3/4]" 
+        />
+        
         <div class="flex flex-col gap-5 text-white flex-1">
             <h1 class="text-3xl md:text-6xl font-bold">{{ title }}</h1>
             <div class="flex items-center gap-2">

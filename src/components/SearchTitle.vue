@@ -1,10 +1,12 @@
 <script>
 
 import SearchResults from './SearchResults.vue';
+import SpinLoader from './SpinLoader.vue';
 
 export default {
     components: {
-        SearchResults
+        SearchResults,
+        SpinLoader
     },
     emits: ['finishSearch'],
     data() {
@@ -40,6 +42,12 @@ export default {
         <input v-model="title" @input="getResults" class="bg-black/60 border-b border-b-white focus:outline-none text-white h-10 w-full pl-7" type="text" placeholder="Enter a movie name">
     </div>
 
-    <search-results @finish-search="$emit('finishSearch')" :results="results"  />
+    <spin-loader v-if="title && !results.length" class="w-full h-[65%] mt-5" />
+    
+    <search-results v-else  @finish-search="$emit('finishSearch')" :results="results"  />
+    
+    <!-- <div class="flex items-center justify-center w-full h-[65%] mt-5">
+        <span class="text-gray-300">No results</span>
+    </div> -->
 
 </template>
