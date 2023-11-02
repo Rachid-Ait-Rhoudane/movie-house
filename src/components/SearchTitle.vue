@@ -12,7 +12,8 @@ export default {
     data() {
         return {
             title: '',
-            results: []
+            results: [],
+            loading: true
         }
     },
     methods: {
@@ -27,7 +28,10 @@ export default {
 
             fetch(`https://api.themoviedb.org/3/search/movie?query=${this.title}`, options)
             .then(response => response.json())
-            .then(response => this.results = response.results)
+            .then(response => {
+                this.results = response.results;
+                this.loading = false;
+            })
             .catch(err => console.error(err));
         }
     }
@@ -42,12 +46,13 @@ export default {
         <input v-model="title" @input="getResults" class="bg-black/60 border-b border-b-white focus:outline-none text-white h-10 w-full pl-7" type="text" placeholder="Enter a movie name">
     </div>
 
-    <spin-loader v-if="title && !results.length" class="w-full h-[65%] mt-5" />
+    <spin-loader v-if="title && loading" class="w-full h-[65%] mt-5" />
     
-    <search-results v-else  @finish-search="$emit('finishSearch')" :results="results"  />
-    
-    <!-- <div class="flex items-center justify-center w-full h-[65%] mt-5">
+    <search-results v-if="!loading && results.length" @finish-search="$emit('finishSearch')" :results="results"  />
+
+    <div v-if="!loading && !results.length" class="flex items-center justify-center w-full h-[65%] mt-5">
         <span class="text-gray-300">No results</span>
-    </div> -->
+    </div>
+
 
 </template>
