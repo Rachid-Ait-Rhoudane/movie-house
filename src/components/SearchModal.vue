@@ -10,6 +10,7 @@ export default {
         SearchParams,
         SearchType
     },
+    emits: ['closeModal'],
     data() {
         return {
             searchType: 'searchTitle'
@@ -22,9 +23,8 @@ export default {
             default: false
         }
     },
-    emits: ['closeModal', 'changeType'],
     methods: {
-        change(searchType) {
+        changeSearchType(searchType) {
             this.searchType = searchType.component;
         }
     }
@@ -42,9 +42,9 @@ export default {
                         <i @click="$emit('closeModal')" class="fa-solid fa-x hover:text-primary text-white absolute top-4 right-4 cursor-pointer"></i>
                         <h1 class="text-xl md:text-3xl text-white w-fit mx-auto capitalize font-bold py-1 px-2 border-l-4 border-l-primary">search for a movie</h1>
 
-                        <search-type @change-type="change" />
+                        <search-type @change-type="changeSearchType" />
 
-                        <Component :is="searchType" />
+                        <Component @finish-search="$emit('closeModal')" :is="searchType" />
 
                     </div>
                 </Transition>

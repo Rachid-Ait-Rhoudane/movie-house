@@ -6,6 +6,7 @@ export default {
     components: {
         ImgLoader
     },
+    emits: ['finishSearch'],
     data() {
         return {
             showImg: false
@@ -14,9 +15,22 @@ export default {
     methods: {
         imgLoaded() {
             this.showImg = true;
+        },
+        visitMoviePage() {
+            this.$router.push({
+                name: 'movie',
+                params: {
+                    id: this.id
+                }
+            })
+            this.$emit('finishSearch');
         }
     },
     props: {
+        id: {
+            type: Number,
+            reuiqred: true
+        },
         poster: {
             type: String,
             reuiqred: true
@@ -41,7 +55,7 @@ export default {
         <img-loader class="w-24 aspect-[3/4]" v-show="!showImg" />
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between flex-1 p-2 gap-2">
             <div class="flex flex-col gap-2 w-3/4">
-                <span class="text-base sm:text-xl font-bold line-clamp-2">{{ title }}</span>
+                <span @click="visitMoviePage" class="text-base sm:text-xl font-bold line-clamp-2 hover:underline hover:text-primary hover:cursor-pointer">{{ title }}</span>
                 <span>
                     <i class="fa-solid fa-star text-primary"></i>
                     {{ rate }}

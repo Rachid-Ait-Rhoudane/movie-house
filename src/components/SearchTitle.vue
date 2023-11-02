@@ -6,6 +6,7 @@ export default {
     components: {
         SearchResults
     },
+    emits: ['finishSearch'],
     data() {
         return {
             title: '',
@@ -39,6 +40,6 @@ export default {
         <input v-model="title" @input="getResults" class="bg-black/60 border-b border-b-white focus:outline-none text-white h-10 w-full pl-7" type="text" placeholder="Enter a movie name">
     </div>
 
-    <search-results :show="title.length" :results="results"  />
+    <search-results @finish-search="$emit('finishSearch')" :results="results"  />
 
 </template>
