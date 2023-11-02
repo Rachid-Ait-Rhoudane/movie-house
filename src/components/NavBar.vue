@@ -1,14 +1,23 @@
 <script>
 
+import SearchModal from "./SearchModal.vue";
+
 export default {
+    components: {
+        SearchModal
+    },
     data() {
         return {
             showMenu: false,
+            showModal: false
         }
     },
     methods: {
         toggleMenuIcon() {
             this.showMenu = !this.showMenu;
+        },
+        changeModalVisibility() {
+            this.showModal = !this.showModal;
         }
     }
 }
@@ -39,9 +48,11 @@ export default {
         </div>
         <div class="flex items-center gap-5">
             <i id="burger-icon" @click="toggleMenuIcon" :class="[showMenu ? 'fa-solid fa-x' : 'fa-solid fa-bars']" class="block md:hidden hover:text-primary cursor-pointer text-2xl"></i>
-            <i class="fa-solid fa-magnifying-glass hover:text-primary cursor-pointer text-2xl"></i>
+            <i @click="changeModalVisibility" class="fa-solid fa-magnifying-glass hover:text-primary cursor-pointer text-2xl"></i>
         </div>
     </nav>
+
+    <search-modal @close-modal="changeModalVisibility" :showModal="showModal" />
 
 </template>
 
