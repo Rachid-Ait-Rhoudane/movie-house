@@ -4,17 +4,20 @@ import SearchLanguage from './SearchLanguage.vue';
 import SearchGenre from './SearchGenre.vue';
 import SearchRate from './SearchRate.vue';
 import SearchResults from './SearchResults.vue';
+import SpinLoader from './SpinLoader.vue';
 
 export default {
     components: {
         SearchLanguage,
         SearchGenre,
         SearchRate,
-        SearchResults
+        SearchResults,
+        SpinLoader
     },
     data() {
         return {
-            results: [],
+            loading: false,
+            results: null,
             chosenLanguage: 'en-US',
             chosenGenres: [],
             chosenRate: 8
@@ -33,6 +36,7 @@ export default {
         },
         getResults() {
 
+            this.loading = true;
             const options = {
                 method: 'GET',
                 headers: {
@@ -43,9 +47,11 @@ export default {
 
             fetch(`https://api.themoviedb.org/3/discover/movie?language=${this.chosenLanguage}&vote_average.gte=${this.chosenRate}&with_genres=${this.chosenGenres.join(',')}`, options)
             .then(response => response.json())
-            .then(response => this.results = response.results)
+            .then(response => {
+                this.results = response.results; 
+                this.loading = false;
+            })
             .catch(err => console.error(err));
-
         }
     }
 }
@@ -66,6 +72,12 @@ export default {
 
     </div>
 
-    <search-results @finish-search="$emit('finishSearch')" :results="results" />
+    <spin-loader v-if="loading" class="w-full h-[65%] mt-5" />
+    
+    <search-results v-if="!loading && Array.isArray(results) && results.length" @finish-search="$emit('finishSearch')" :results="results"  />
+
+    <div v-if="!loading && Array.isArray(results) && !results.length" class="flex items-center justify-center w-full h-[65%] mt-5">
+        <span class="text-gray-300">No results</span>
+    </div>
 
 </template>

@@ -43,7 +43,7 @@ export default {
         </span>
         <ul v-show="showGenreMenu" class="absolute z-40 bg-secondary w-full border border-white rounded-sm mt-1 h-36 overflow-auto divide-y-[1px] divide-white">
             <li v-for="genre in genres" :key="genre.id" class="flex items-center gap-2 p-2 hover:bg-[#222222]">
-                <input @change="$emit('genres', chosenGenres)" v-model="chosenGenres" :value="genre.id"  class="w-4 h-4" :id="genre.name" type="checkbox">
+                <input @change="$emit('genres', chosenGenres)" v-model="chosenGenres" :value="genre.id"  class="w-4 h-4 cursor-pointer" :id="genre.name" type="checkbox">
                 <label class="block w-full h-full cursor-pointer" :for="genre.name">{{ genre.name }}</label>
             </li>
         </ul>

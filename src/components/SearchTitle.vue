@@ -13,11 +13,13 @@ export default {
         return {
             title: '',
             results: [],
-            loading: true
+            searching: false
         }
     },
     methods: {
         getResults() {
+
+            this.searching = true;
             const options = {
                 method: 'GET',
                 headers: {
@@ -30,7 +32,7 @@ export default {
             .then(response => response.json())
             .then(response => {
                 this.results = response.results;
-                this.loading = false;
+                this.searching = false;
             })
             .catch(err => console.error(err));
         }
@@ -46,11 +48,11 @@ export default {
         <input v-model="title" @input="getResults" class="bg-black/60 border-b border-b-white focus:outline-none text-white h-10 w-full pl-7" type="text" placeholder="Enter a movie name">
     </div>
 
-    <spin-loader v-if="title && loading" class="w-full h-[65%] mt-5" />
+    <spin-loader v-if="title && searching" class="w-full h-[65%] mt-5" />
     
-    <search-results v-if="title && !loading && results.length" @finish-search="$emit('finishSearch')" :results="results"  />
+    <search-results v-if="title && !searching && results.length" @finish-search="$emit('finishSearch')" :results="results"  />
 
-    <div v-if="title && !loading && !results.length" class="flex items-center justify-center w-full h-[65%] mt-5">
+    <div v-if="title && !searching && !results.length" class="flex items-center justify-center w-full h-[65%] mt-5">
         <span class="text-gray-300">No results</span>
     </div>
 

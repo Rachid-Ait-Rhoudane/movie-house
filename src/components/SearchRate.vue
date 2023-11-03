@@ -30,7 +30,7 @@ export default {
         </span>
         <ul v-show="showRateMenu" class="absolute z-30 bg-secondary w-full border border-white rounded-sm mt-1 h-36 overflow-auto divide-y-[1px] divide-white">
             <li v-for="rate in rates" :key="rate" class="flex items-center gap-2 p-2 hover:bg-[#222222]">
-                <input @change="$emit('rate', rate)" v-model="chosenRate" :value="rate" class="w-4 h-4" :id="`rate-${rate}`" type="radio">
+                <input @change="$emit('rate', rate)" v-model="chosenRate" :value="rate" class="w-4 h-4 cursor-pointer" :id="`rate-${rate}`" type="radio">
                 <label class="flex items-center gap-2 w-full h-full cursor-pointer" :for="`rate-${rate}`">
                     <i class="fa-solid fa-star text-primary"></i>
                     {{ rate }}
