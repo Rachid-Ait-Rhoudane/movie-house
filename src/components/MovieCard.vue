@@ -1,10 +1,12 @@
 <script>
 
 import ImgRender from './ImgRender.vue';
+import WatchlistButton from './WatchlistButton.vue';
 
 export default {
     components: {
-        ImgRender
+        ImgRender,
+        WatchlistButton
     },
     props: {
         id: {
@@ -30,9 +32,14 @@ export default {
 <template>
 
     <div class="group duration-500 hover:-translate-y-3 relative bg-secondary w-full">
-        <span class="absolute z-20 top-0 left-2 after:absolute after:top-0 after:left-0 after:block after:border-x-[24px] after:border-t-[60px] after:border-b-[24px] after:border-secondary/60 after:border-b-transparent">
-            <i class="fa-solid fa-plus text-xl text-white absolute z-30 left-4 top-4 cursor-pointer"></i>
-        </span>
+
+        <watchlist-button 
+            :id="id"
+            :poster="poster"
+            :title="id"
+            :rate="rate"
+        />
+        
         <img-render 
             :path="`https://image.tmdb.org/t/p/original${poster}`" 
             class="w-full aspect-[3/4]" 

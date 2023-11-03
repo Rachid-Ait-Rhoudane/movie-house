@@ -1,12 +1,18 @@
 <script>
 
 import ImgRender from './ImgRender.vue';
+import WatchlistButton from './WatchlistButton.vue';
 
 export default {
     components: {
-        ImgRender
+        ImgRender,
+        WatchlistButton
     },
     props: {
+        id: {
+            type: Number,
+            required: true
+        },
         poster: {
             type: String,
             required: true
@@ -36,10 +42,18 @@ export default {
 
     <div class="flex items-center flex-col sm:flex-row gap-4 w-full">
 
-        <img-render 
-            :path="`https://image.tmdb.org/t/p/original/${poster}`" 
-            class="w-80 aspect-[3/4]" 
-        />
+        <div class="relative">
+            <watchlist-button 
+                :id="id"
+                :poster="poster"
+                :title="id"
+                :rate="rate"
+            />
+            <img-render 
+                :path="`https://image.tmdb.org/t/p/original/${poster}`" 
+                class="w-80 aspect-[3/4]" 
+            />
+        </div>
         
         <div class="flex flex-col gap-5 text-white flex-1">
             <h1 class="text-3xl md:text-6xl font-bold">{{ title }}</h1>

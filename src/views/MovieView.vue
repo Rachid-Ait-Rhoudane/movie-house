@@ -69,6 +69,7 @@ export default {
 
             <movie-general-info 
                 :key="movie.id"
+                :id="movie.id"
                 :poster="movie.poster_path"
                 :title="movie.title"
                 :genres="movie.genres"
