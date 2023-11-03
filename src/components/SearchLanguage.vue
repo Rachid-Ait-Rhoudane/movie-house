@@ -18,6 +18,7 @@ export default {
             }
         }
     },
+    emits: ['language'],
     methods: {
         changeVisibility() {
             this.showLanguageMenu = !this.showLanguageMenu;
@@ -36,7 +37,7 @@ export default {
         </span>
         <ul v-show="showLanguageMenu" class="absolute z-50 bg-secondary mr-2 w-full border border-white rounded-sm mt-1 h-36 overflow-auto divide-y-[1px] divide-white">
             <li v-for="language in languages" :key="language.name" class="flex items-center gap-2 p-2 hover:bg-[#222222]">
-                <input v-model="chosenLanguage" :value="language" class="w-4 h-4 cursor-pointer" :id="language.name" type="radio">
+                <input @change="$emit('language', language)" v-model="chosenLanguage" :value="language" class="w-4 h-4 cursor-pointer" :id="language.name" type="radio">
                 <label class="block w-full h-full cursor-pointer" :for="language.name">{{ language.name }}</label>
             </li>
         </ul>
