@@ -36,7 +36,7 @@ export default {
         <watchlist-button 
             :id="id"
             :poster="poster"
-            :title="id"
+            :title="title"
             :rate="rate"
         />
         
