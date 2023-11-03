@@ -1,5 +1,6 @@
 <script>
 
+import SpinLoader from '../components/SpinLoader.vue';
 import ImgRender from '../components/ImgRender.vue';
 import MovieGeneralInfo from "../components/MovieGeneralInfo.vue";
 import MovieNumbers from "../components/MovieNumbers.vue";
@@ -20,7 +21,8 @@ export default {
         MovieImages,
         MovieVideos,
         MovieCast,
-        MovieSimilar
+        MovieSimilar,
+        SpinLoader
     },
     data() {
         return {
@@ -42,6 +44,7 @@ export default {
         .catch(err => console.error(err));
 
         this.$watch(() => this.$route.params, () => {
+            this.movie = null;
             fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?append_to_response=videos,images,casts,reviews,similar`, options)
             .then(response => response.json())
             .then(response => {this.movie = response;})
@@ -113,5 +116,7 @@ export default {
 
         </div>
     </div>
+
+    <spin-loader class="w-screen h-screen" v-else />
 
 </template>
