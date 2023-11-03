@@ -12,6 +12,11 @@ const router = createRouter({
       path: '/movie/:id',
       name: 'movie',
       component: () => import('../views/MovieView.vue')
+    },
+    {
+      path: '/watchlist',
+      name: 'watchlist',
+      component: () => import('../views/WatchlistView.vue')
     }
   ],
   linkActiveClass: 'active'
