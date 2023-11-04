@@ -53,7 +53,7 @@ export default {
             </span>
         </div>
         <div class="py-2 m-2 border-t-2 border-t-white flex justify-between items-center text-white">
-            <router-link :to="{name: 'movie', params: {id: id}}" class="capitalize font-bold cursor-pointer hover:underline hover:text-primary" type="button">sead more</router-link>
+            <router-link :to="{name: 'movie', params: {id: id}}" class="capitalize font-bold cursor-pointer hover:underline hover:text-primary" type="button">see more</router-link>
             <i class="fa-solid fa-right-long group-hover:animate-bounce-left-right text-primary text-xl"></i>
         </div>
     </div>
