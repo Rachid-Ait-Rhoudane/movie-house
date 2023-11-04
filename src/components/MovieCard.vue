@@ -44,6 +44,7 @@ export default {
             :path="`https://image.tmdb.org/t/p/original${poster}`" 
             class="w-full aspect-[3/4]" 
         />
+        
         <div class="p-2">
             <h1 class="text-xl capitalize font-bold text-white min-h-[55px] max-w-full line-clamp-2">{{ title }}</h1>
             <span class="block mt-2 text-white">

@@ -19,7 +19,7 @@ export default {
 
 <template>
 
-    <div class="flex flex-col gap-4 w-full h-[65%] mt-5 overflow-y-auto">
+    <div class="flex flex-col gap-4 w-full h-96 mt-5 overflow-y-auto">
         <search-movie-card
             @finish-search="$emit('finishSearch')" 
             v-for="movie in results" 
@@ -28,6 +28,7 @@ export default {
             :poster="movie.poster_path"
             :title="movie.title"
             :rate="movie.vote_average"
+            :overview="movie.overview"
         />
     </div>
     

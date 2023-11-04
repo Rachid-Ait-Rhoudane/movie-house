@@ -67,9 +67,9 @@ export default {
 
 <template>
 
-    <span @click="saveOrRemoveMovie" class="absolute z-20 top-0 left-2 after:absolute after:top-0 after:left-0 after:block after:border-x-[24px] after:border-t-[60px] after:border-b-[24px] after:border-secondary/60 after:border-b-transparent">
+    <span @click="saveOrRemoveMovie" class="absolute top-0 left-2 flex justify-center w-12 h-6 bg-secondary/80 after:absolute after:-bottom-[48px] after:left-0 after:w-full after:border-[24px] after:border-secondary/80 after:border-b-transparent">
         <i 
-            class="fa-solid text-xl absolute z-30 left-4 top-4 cursor-pointer" 
+            class="fa-solid relative z-50 text-xl cursor-pointer mt-3" 
             :class="saved ? 'fa-trash text-primary' : 'fa-plus text-white'"
         ></i>
     </span>
