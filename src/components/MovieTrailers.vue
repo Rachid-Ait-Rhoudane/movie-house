@@ -46,7 +46,6 @@ export default {
             </template>
         </special-header>
         <swiper
-            id="video-swiper"
             class="w-full lg:w-3/4 mt-10"
             :slides-per-view="1"
             :modules="modules"

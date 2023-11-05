@@ -29,7 +29,7 @@ export default {
 
 <template>
 
-    <section v-if="Array.from(videos).length" class="container py-20">
+    <section v-if="Array.from(videos).length" class="container py-10">
         <special-header>
             <template #title>
                 Videos
@@ -39,7 +39,6 @@ export default {
             </template>
         </special-header>
         <swiper
-            id="video-swiper"
             class="w-full lg:w-3/4 mt-10"
             :slides-per-view="1"
             :modules="modules"

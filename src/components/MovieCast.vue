@@ -56,7 +56,7 @@ export default {
             </template>
         </special-header>
         <swiper
-            class="swiper-container mt-10"
+            class="swiper-container mt-10 show-swiper-buttons"
             :modules="modules"
             :space-between="10"
             :breakpoints="breakpoints"

@@ -92,16 +92,17 @@ padding: 50px 30px;
 }
 
 @media(max-width: 768px) {
-  .swiper-button-next:not(#video-swiper .swiper-button-next),
-  .swiper-button-prev:not(#video-swiper .swiper-button-prev) {
+  .swiper-button-next:not(.show-swiper-buttons .swiper-button-next),
+  .swiper-button-prev:not(.show-swiper-buttons .swiper-button-prev) {
     display: none;
   }
 
-  #video-swiper .swiper-button-next,
-  #video-swiper .swiper-button-prev {
+  .show-swiper-buttons .swiper-button-next,
+  .show-swiper-buttons .swiper-button-prev {
     background-color: transparent;
     padding: 0 20px 0 20px;
   }
+
 }
 
 .swiper-button-next {

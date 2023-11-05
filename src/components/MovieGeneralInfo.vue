@@ -44,7 +44,7 @@ export default {
 
 <template>
 
-        <section class="relative w-full h-screen flex items-center before:absolute before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
+        <section class="relative w-full h-full py-28 flex items-center before:absolute before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
 
             <img-render 
                 :path="`https://image.tmdb.org/t/p/original/${backdrop}`" 
