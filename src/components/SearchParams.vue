@@ -74,7 +74,7 @@ export default {
 
     <spin-loader v-if="loading" class="w-full h-[65%] mt-5" />
     
-    <search-results v-if="!loading && Array.isArray(results) && results.length" @finish-search="$emit('finishSearch')" :results="results"  />
+    <search-results class="h-[calc(100%-320px)] md:h-[calc(100%-180px)]" v-if="!loading && Array.isArray(results) && results.length" @finish-search="$emit('finishSearch')" :results="results"  />
 
     <div v-if="!loading && Array.isArray(results) && !results.length" class="flex items-center justify-center w-full h-[65%] mt-5">
         <span class="text-gray-300">No results</span>
