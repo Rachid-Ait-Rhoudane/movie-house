@@ -1,10 +1,12 @@
 <script>
 
 import navBar from "./components/NavBar.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   components: {
-    navBar
+    navBar,
+    Footer
   }
 }
 </script>
@@ -15,9 +17,28 @@ export default {
     <nav-bar />
   </header>
 
-  <main>
+  <main class="min-h-screen">
     <router-view />
   </main>
 
+  <Footer  />
+
 </template>
+
+<style>
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #181818;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #F68B1E; 
+}
+
+</style>
+
 

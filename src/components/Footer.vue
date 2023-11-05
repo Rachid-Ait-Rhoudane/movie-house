@@ -1,5 +1,5 @@
 <template>
-    <footer class="relative w-full bg-secondary flex flex-col gap-5 items-center p-4 pb-16">
+    <footer class="relative w-full bg-secondary flex flex-col gap-5 items-center p-4 pb-16 mt-28">
         <div class="text-3xl text-white space-x-4">
             <a class="hover:text-primary" href="#">
                 <i class="fa-brands fa-facebook"></i>

@@ -29,10 +29,14 @@ export default {
 </script>
 
 <template>
-    <div class="my-20">
+
+    <section class="container py-10">
         <special-header>
             <template #title>
                 Numbers
+            </template>
+            <template #description>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, officiis.
             </template>
         </special-header>
         <div class="bg-secondary/80 mt-10 py-10 grid grid-cols-1 xsm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4 justify-center">
@@ -57,5 +61,6 @@ export default {
                 {{ popularity }}
             </div>
         </div>
-    </div>
+    </section>
+
 </template>

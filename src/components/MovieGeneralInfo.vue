@@ -32,6 +32,10 @@ export default {
         rate: {
             type: Number,
             required: true
+        },
+        backdrop: {
+            type: String,
+            required: true
         }
     }
 }
@@ -40,32 +44,40 @@ export default {
 
 <template>
 
-    <div class="flex items-center flex-col sm:flex-row gap-4 w-full">
+        <section class="relative w-full h-screen flex items-center before:absolute before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
 
-        <div class="relative">
-            <watchlist-button 
-                :id="id"
-                :poster="poster"
-                :title="title"
-                :rate="rate"
-            />
             <img-render 
-                :path="`https://image.tmdb.org/t/p/original/${poster}`" 
-                class="w-80 aspect-[3/4]" 
+                :path="`https://image.tmdb.org/t/p/original/${backdrop}`" 
+                class="absolute top-0 left-0 w-full h-full object-cover"    
             />
-        </div>
-        
-        <div class="flex flex-col gap-5 text-white flex-1">
-            <h1 class="text-3xl md:text-6xl font-bold">{{ title }}</h1>
-            <div class="flex items-center gap-2">
-                <span class="text-sm py-1 px-2 border border-white rounded-md" v-for="genre in genres" :key="genre.id">{{ genre.name }}</span>
+
+            <div class="relative z-20 container flex items-center flex-col sm:flex-row gap-4">
+                <div class="relative">
+                    <watchlist-button 
+                        :id="id"
+                        :poster="poster"
+                        :title="title"
+                        :rate="rate"
+                    />
+                    <img-render 
+                        :path="`https://image.tmdb.org/t/p/original/${poster}`" 
+                        class="w-80 aspect-[3/4]" 
+                    />
+                </div>
+                
+                <div class="flex flex-col gap-5 text-white flex-1">
+                    <h1 class="text-3xl md:text-6xl font-bold ">{{ title }}</h1>
+                    <div class="flex items-center gap-2 ">
+                        <span class="text-sm py-1 px-2 border border-white rounded-md" v-for="genre in genres" :key="genre.id">{{ genre.name }}</span>
+                    </div>
+                    <span class="flex items-center gap-2 text-base md:text-xl">
+                        <i class="fa-solid fa-star text-primary"></i>
+                        {{ rate }}
+                    </span>
+                    <p class="text-base md:text-xl">{{ overview }}</p>
+                </div>
             </div>
-            <span class="flex items-center gap-2 text-base md:text-xl">
-                <i class="fa-solid fa-star text-primary"></i>
-                {{ rate }}
-            </span>
-            <p class="text-base md:text-xl">{{ overview }}</p>
-        </div>
-    </div>
+
+        </section>
 
 </template>

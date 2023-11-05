@@ -29,10 +29,13 @@ export default {
 
 <template>
 
-    <div v-if="Array.from(videos).length" class="my-20">
+    <section v-if="Array.from(videos).length" class="container py-20">
         <special-header>
             <template #title>
                 Videos
+            </template>
+            <template #description>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, officiis.
             </template>
         </special-header>
         <swiper
@@ -52,6 +55,6 @@ export default {
                 
             </swiper-slide>
         </swiper>
-    </div>
+    </section>
 
 </template>

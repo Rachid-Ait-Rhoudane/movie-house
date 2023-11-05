@@ -57,67 +57,59 @@ export default {
 
 <template>
 
-    <div v-if="movie" class="relative overflow-x-hidden w-screen h-screen before:fixed before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
+    <div v-if="movie">
 
-        <img-render 
-            :key="movie.id" 
-            :path="`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`" 
-            class="fixed top-0 left-0 w-full h-full object-cover"    
+        <movie-general-info
+            :key="movie.id"
+            :id="movie.id"
+            :backdrop="movie.backdrop_path"
+            :poster="movie.poster_path"
+            :title="movie.title"
+            :genres="movie.genres"
+            :rate="movie.vote_average"
+            :overview="movie.overview"
         />
 
-        <div class="relative z-20 container mt-24">
+        <movie-numbers 
+            :key="movie.id"
+            :runtime="movie.runtime"
+            :budget="movie.budget"
+            :revenue="movie.revenue"
+            :popularity="movie.popularity"
+        />
 
-            <movie-general-info 
-                :key="movie.id"
-                :id="movie.id"
-                :poster="movie.poster_path"
-                :title="movie.title"
-                :genres="movie.genres"
-                :rate="movie.vote_average"
-                :overview="movie.overview"
-            />
+        <movie-trailers
+            :key="movie.id"
+            :videos="movie.videos.results"
+        />
 
-            <movie-numbers 
-                :key="movie.id"
-                :runtime="movie.runtime"
-                :budget="movie.budget"
-                :revenue="movie.revenue"
-                :popularity="movie.popularity"
-            />
+        <movie-images 
+            :key="movie.id"
+            :images="movie.images.backdrops"
+        />
 
-            <movie-trailers
-                :key="movie.id"
-                :videos="movie.videos.results"
-            />
-            
-            <movie-images 
-                :key="movie.id"
-                :images="movie.images.backdrops"
-            />
+        <movie-videos 
+            :key="movie.id"
+            :videos="movie.videos.results"
+        />
 
-            <movie-videos 
-                :key="movie.id"
-                :videos="movie.videos.results"
-            />
+        <movie-cast 
+           :key="movie.id"
+           :actors="movie.casts.cast"
+       />
 
-            <movie-cast 
-                :key="movie.id"
-                :actors="movie.casts.cast"
-            />
+       <movie-reviews 
+            :key="movie.id"
+            :reviews="movie.reviews.results"
+        />
 
-            <movie-reviews 
-                :key="movie.id"
-                :reviews="movie.reviews.results"
-            />
+        <movie-similar 
+            :key="movie.id"
+            :similar="movie.similar.results"
+        />
 
-            <movie-similar 
-                :key="movie.id"
-                :similar="movie.similar.results"
-            />
-
-        </div>
     </div>
 
-    <spin-loader class="w-screen h-screen" v-else />
+    <spin-loader class="w-full h-screen" v-else />
 
 </template>

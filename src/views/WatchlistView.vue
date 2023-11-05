@@ -50,40 +50,36 @@ export default {
 
 <template>
 
-    <div class="relative h-screen overflow-hidden flex justify-center before:absolute before:top-0 before:left-0 before:bg-black/80 before:w-full before:h-full before:z-10">
-        <img class="absolute w-full h-full object-cover" src="/images/movies-bg-image.jpg" alt="bg image">
-        <div class="container relative z-50 mt-28">
+    <div class="container mt-28">
 
-            <special-header>
-                <template #title>
-                    Watchlist
-                </template>
-                <template #description>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, officiis.
-                </template>
-            </special-header>
+        <special-header>
+            <template #title>
+                Watchlist
+            </template>
+            <template #description>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia, officiis.
+            </template>
+        </special-header>
 
-            <swiper
-                v-if="savedMovies"
-                class="swiper-container mt-10 overflow-y-visible"
-                :modules="modules"
-                :space-between="10"
-                :breakpoints="breakpoints"
-                navigation
-            >
-                <swiper-slide class="flex justify-center items-center" v-for="movie in savedMovies" :key="movie.id">
-                    <movie-card
-                        :id="movie.id"
-                        :poster="movie.poster"
-                        :title="movie.title"
-                        :rate="movie.rate" 
-                    />
-                </swiper-slide>
-            </swiper>
+        <swiper
+            v-if="savedMovies"
+            class="swiper-container mt-10 overflow-y-visible"
+            :modules="modules"
+            :space-between="10"
+            :breakpoints="breakpoints"
+            navigation
+        >
+            <swiper-slide class="flex justify-center items-center" v-for="movie in savedMovies" :key="movie.id">
+                <movie-card
+                    :id="movie.id"
+                    :poster="movie.poster"
+                    :title="movie.title"
+                    :rate="movie.rate" 
+                />
+            </swiper-slide>
+        </swiper>
 
-            <spin-loader class="swiper-container h-[408.8px]" v-else />
-
-        </div>
+        <spin-loader class="swiper-container h-[408.8px]" v-else />
 
     </div>
     
